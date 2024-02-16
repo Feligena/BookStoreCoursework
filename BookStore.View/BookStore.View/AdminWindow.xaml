@@ -1,0 +1,118 @@
+﻿<Window x:Class="Bookstore.View.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bookstore.View"
+        xmlns:viewModel="clr-namespace:Bookstore.View.MVVM.ViewModel"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        d:DataContext="{d:DesignInstance Type=viewModel:AdminViewModel}"
+        MinHeight="600" MinWidth="920" WindowStyle="None" ResizeMode="NoResize" 
+        Background="Transparent" AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <viewModel:AdminViewModel/>
+    </Window.DataContext>
+
+    <Border Background="#a399d6" CornerRadius="30">
+        <!--Background="#997EEE"-->
+        <Grid Background="Transparent" MouseDown="Grid_MouseDown">
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="10" Color="#64527A"/>
+            </Grid.Effect>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Book Store" 
+                   VerticalAlignment="Center" 
+                   Margin="40,10,0,0" 
+                   Foreground="White" 
+                   FontSize="22" 
+                   FontWeight="Bold"/>
+
+            <StackPanel Grid.Row="1">
+
+
+                <RadioButton Content="Библиотека" 
+                         Height="50" 
+                         Foreground="White" 
+                         FontSize="18" 
+                         Style="{StaticResource MenuButtonTheme}"
+                         IsChecked="True"
+                         Command="{Binding LibraryViewCommand}"/>
+
+                <RadioButton Content="Подборки" 
+                         Height="50" 
+                         Foreground="White" 
+                         FontSize="18" 
+                         Style="{StaticResource MenuButtonTheme}"
+                         Command="{Binding SelectionViewCommand}"/>
+
+                <RadioButton Content="Управление акциями" 
+                         Height="70" 
+                         Foreground="White" 
+                         FontSize="18" 
+                         Style="{StaticResource MenuButtonTheme}"
+                         Command="{Binding ShareManagementViewCommand}"/>
+
+                <RadioButton Content="Покупатели" 
+                         Height="50" 
+                         Foreground="White" 
+                         FontSize="18" 
+                         Style="{StaticResource MenuButtonTheme}"
+                         Command="{Binding BayersViewCommand}"/>
+
+                <RadioButton Content="Сотрудники" 
+                         Height="50" 
+                         Foreground="White" 
+                         FontSize="18" 
+                         Style="{StaticResource MenuButtonTheme}"
+                         Command="{Binding EmployeeViewCommand}"/>
+
+                <RadioButton Content="Списания" 
+                         Height="50" 
+                         Foreground="White" 
+                         FontSize="18" 
+                         Style="{StaticResource MenuButtonTheme}"
+                         Command="{Binding WriteOffsViewCommand}"/>
+
+            </StackPanel>
+
+            <Button Width="20" 
+                 Height="20" 
+                 VerticalAlignment="Top" 
+                 HorizontalAlignment="Right" 
+                 Margin="12 12" 
+                 Grid.Column="1"
+                 materialDesign:HintAssist.Hint="X" Style="{StaticResource MaterialDesignFloatingActionButton}"
+                 Content="X"
+                Foreground="White"
+                Click="ButtonExit_Click"/>
+
+            <Button Width="20" 
+                 Height="20" 
+                 VerticalAlignment="Top" 
+                 HorizontalAlignment="Right" 
+                 Margin="40 12" 
+                 Grid.Column="1"
+                 materialDesign:HintAssist.Hint="_" Style="{StaticResource MaterialDesignFloatingActionButton}"
+                 Content="_"
+                Foreground="White"
+                Click="ButtonMinimize_Click"/>
+
+            <ContentControl Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="20"
+                        Content="{Binding CurrentView}"/>
+
+        </Grid>
+    </Border>
+</Window>

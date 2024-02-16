@@ -1,0 +1,98 @@
+ <!--<Border Background="#a399d6" CornerRadius="30" MouseDown="Border_MouseDown" Margin="20,20,20,20">
+     <Border.Effect>
+         <DropShadowEffect BlurRadius="18" Color="#64527A"/>
+     </Border.Effect>
+     <Grid>
+         <Grid.Effect>
+             <DropShadowEffect BlurRadius="15" Color="#64527A"/>
+         </Grid.Effect>
+
+         <Grid.RowDefinitions>
+             <RowDefinition Height="45"/>
+             <RowDefinition/>
+         </Grid.RowDefinitions>
+
+         <Button Width="20" 
+           Height="20" 
+           VerticalAlignment="Top" 
+           HorizontalAlignment="Right" 
+           Margin="12 12" 
+           Grid.Column="1"
+           materialDesign:HintAssist.Hint="X" Style="{StaticResource MaterialDesignFloatingActionButton}"
+           Content="X"
+          Foreground="Red"
+          Click="ButtonExit_Click"/>
+
+         <Button Width="20" 
+           Height="20" 
+           VerticalAlignment="Top" 
+           HorizontalAlignment="Right" 
+           Margin="40 12" 
+           Grid.Column="1"
+           materialDesign:HintAssist.Hint="_" Style="{StaticResource MaterialDesignFloatingActionButton}"
+           Content="_"
+          Foreground="Red"
+          Click="ButtonMinimize_Click"/>
+
+         <Border Grid.Row="1"
+          Margin=" 30,0,30,45"
+           Background="#B4ADCC" CornerRadius="30">
+             --><!--<StackPanel >
+                 <TextBlock Margin="10 20 10 10"
+                     Text="Добавить книгу"
+                     FontSize="20"
+                     FontStyle="Italic"
+                     FontWeight="Bold"
+                     HorizontalAlignment="Center"/>
+
+                 <TextBox x:Name ="textBoxNameBook" materialDesign:HintAssist.Hint="Название" 
+                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                      Margin="20 10" Text="{Binding name_book}"/>
+
+                 <ComboBox x:Name ="AuthorComboBox" materialDesign:HintAssist.Hint="Автор"
+                      Style="{StaticResource MaterialDesignComboBox}"
+                      Margin="20 10"
+                      DisplayMemberPath="last_name" SelectedItem="{Binding Author}">
+                 </ComboBox>
+
+                 <ComboBox x:Name ="PublishingComboBox" materialDesign:HintAssist.Hint="Издательство"
+                      Style="{StaticResource MaterialDesignComboBox}"
+                      Margin="20 10"
+                      DisplayMemberPath="name_pub_house" SelectedItem="{Binding publishing_house}">
+                 </ComboBox>
+                 
+                 <TextBox x:Name ="textBoxYear" materialDesign:HintAssist.Hint="Год" 
+                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                      Margin="20 10" Text="{Binding year_publishing}"/>
+
+                 <TextBox x:Name="textBoxPages" materialDesign:HintAssist.Hint="Кол-во страниц"
+                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                          Margin="20 10" Text="{Binding number_pages}"/>
+
+                 <ComboBox x:Name ="GenresComboBox" materialDesign:HintAssist.Hint="Жанр"
+                      Style="{StaticResource MaterialDesignComboBox}"
+                      Margin="20 10"
+                      DisplayMemberPath="name_genre" SelectedItem="{Binding Genres}">
+                 </ComboBox>
+
+                 <TextBox x:Name ="textBoxCostPrice" materialDesign:HintAssist.Hint="Себестоимость" 
+                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                      Margin="20 10" Text="{Binding cost_price}"/>
+                 
+                 <TextBox x:Name ="textBoxSelPrice" materialDesign:HintAssist.Hint="Цена продажи" 
+                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                      Margin="20 10" Text="{Binding selling_price}"/>
+
+                 <TextBox x:Name ="textBoxAmount" materialDesign:HintAssist.Hint="Количество" 
+                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                      Margin="20 10" Text="{Binding amount}"/>
+
+                 <Button Content="Сохранить" Margin="20 30" Click="SaveBookBtn_Click"/>
+
+             </StackPanel>--><!--
+
+         </Border>
+
+
+     </Grid>
+ </Border>-->
