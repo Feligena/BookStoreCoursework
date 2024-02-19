@@ -36,7 +36,6 @@
                   AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Наименование" Binding="{Binding name_book}" Width="auto"></DataGridTextColumn>
-                <!--<DataGridTextColumn Header="Автор" Binding="{Binding Author.Human.first_name Author.Human.last_name Author.Human.patronymic}" Width="*"></DataGridTextColumn>-->
                 <DataGridTextColumn Header="Автор" Binding="{Binding nameAuthor}" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Header="Жанр" Binding="{Binding genre}" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Header="Цена, руб" Binding="{Binding selling_price}" Width="auto"></DataGridTextColumn>

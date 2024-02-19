@@ -1,5 +1,4 @@
-﻿using BookStore.View.MVVM.Models;
-using System;
+﻿using System;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -45,22 +44,22 @@ namespace Bookstore.View
             if (_currentBook.publishing_house == null)
                 errors.AppendLine("Выберите издательство");
 
-            if (string.IsNullOrWhiteSpace(_currentBook.year_publishing.ToString()))
+            if (_currentBook.year_publishing == 0)
                 errors.AppendLine("Укажите год издания");
 
-            if (string.IsNullOrWhiteSpace(_currentBook.number_pages.ToString()))
+            if (_currentBook.number_pages == 0)
                 errors.AppendLine("Укажите количество страниц");
 
             if (_currentBook.Genres == null)
                 errors.AppendLine("Выберите жанр");
 
-            if (string.IsNullOrWhiteSpace(_currentBook.cost_price.ToString()))
+            if (_currentBook.cost_price == 0)
                 errors.AppendLine("Укажите себестоимость");
 
-            if (string.IsNullOrWhiteSpace(_currentBook.selling_price.ToString()))
+            if (_currentBook.selling_price == 0)
                 errors.AppendLine("Укажите стоимость продажи");
 
-            if (string.IsNullOrWhiteSpace(_currentBook.amount.ToString()))
+            if (_currentBook.amount == 0)
                 errors.AppendLine("Укажите количество");
 
             if (errors.Length > 0)
