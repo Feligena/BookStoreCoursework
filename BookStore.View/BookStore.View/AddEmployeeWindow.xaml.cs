@@ -56,7 +56,7 @@ namespace Bookstore.View
 
             if (errors.Length > 0)
             {
-                MessageBox.Show(errors.ToString());
+                MessageBox.Show(errors.ToString(), "Ошибка!");
                 return;
             }
 

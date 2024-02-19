@@ -110,6 +110,7 @@
     <Compile Include="job_titles.cs">
       <DependentUpon>BookStoreDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\Models\DisplayAuthor.cs" />
     <Compile Include="promotions.cs">
       <DependentUpon>BookStoreDb.tt</DependentUpon>
     </Compile>
@@ -271,9 +272,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MVVM\Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="BookStoreDb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
