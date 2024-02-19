@@ -92,7 +92,8 @@ namespace Bookstore.View
 
         private void AddPubHouseBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var addPubHouse = new AddPublishingHouseWindow();
+            addPubHouse.ShowDialog();
         }
 
         private void AddAuthorBtn_Click(object sender, RoutedEventArgs e)

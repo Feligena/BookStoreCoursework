@@ -84,6 +84,9 @@
     <Compile Include="AddAuthorWindow.xaml.cs">
       <DependentUpon>AddAuthorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddPublishingHouseWindow.xaml.cs">
+      <DependentUpon>AddPublishingHouseWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="author.cs">
       <DependentUpon>BookStoreDb.tt</DependentUpon>
     </Compile>
@@ -142,6 +145,10 @@
     <Page Include="AddEmployeeWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AddPublishingHouseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddUserWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
