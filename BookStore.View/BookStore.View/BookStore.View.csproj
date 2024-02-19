@@ -81,6 +81,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddAuthorWindow.xaml.cs">
+      <DependentUpon>AddAuthorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="author.cs">
       <DependentUpon>BookStoreDb.tt</DependentUpon>
     </Compile>
@@ -128,6 +131,10 @@
     <Compile Include="write_offs.cs">
       <DependentUpon>BookStoreDb.tt</DependentUpon>
     </Compile>
+    <Page Include="AddAuthorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddBookWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

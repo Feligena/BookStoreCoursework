@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Bookstore.View"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        WindowStyle="None" Background="Transparent" Height="900" Width="800" 
+        WindowStyle="None" Background="Transparent" Height="600" Width="400" 
         ResizeMode="NoResize" AllowsTransparency="True"
         WindowStartupLocation="CenterScreen">
     

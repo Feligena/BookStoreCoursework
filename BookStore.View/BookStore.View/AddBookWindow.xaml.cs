@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookStore.View;
+using System;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -96,7 +97,8 @@ namespace Bookstore.View
 
         private void AddAuthorBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var addAuthor = new AddAuthorWindow();
+            addAuthor.ShowDialog();
         }
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
