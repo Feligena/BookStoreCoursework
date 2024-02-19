@@ -67,5 +67,25 @@ namespace Bookstore.View.MVVM.View
         {
 
         }
+
+        private void SearchEmployeeBtn_CLick(object sender, RoutedEventArgs e)
+        {
+            //SearchEmployeeText
+            EmployeeDataGrid.ItemsSource = _db.Employees.Where(em => em.is_deleted == false 
+                                                                     && (em.Human.first_name.Contains(SearchEmployeeText.Text)
+                                                                     || em.Human.last_name.Contains(SearchEmployeeText.Text)
+                                                                     || em.Human.patronymic.Contains(SearchEmployeeText.Text)))
+                                                        .Join(_db.Authorization, p => p.id, a => a.id_employee,
+                                                             (p, a) => new
+                                                             {
+                                                                 a.id,
+                                                                 fname = p.Human.first_name,
+                                                                 lname = p.Human.last_name,
+                                                                 p.Human.patronymic,
+                                                                 title = p.job_titles.name_title,
+                                                                 a.login
+                                                             })
+                                                        .ToList();
+        }
     }
 }

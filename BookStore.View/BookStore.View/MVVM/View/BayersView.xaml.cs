@@ -39,5 +39,13 @@ namespace Bookstore.View.MVVM.View
 
         }
 
+        private void SearchBayersBtn_CLick(object sender, RoutedEventArgs e)
+        {
+            UserDataGrid.ItemsSource = _db.users.Where(u => u.is_deleted == false
+                                                            && (u.Human.first_name.Contains(SearchBayersText.Text)
+                                                            || u.Human.last_name.Contains(SearchBayersText.Text)
+                                                            || u.Human.patronymic.Contains(SearchBayersText.Text)
+                                                            || u.phone.ToString().Contains(SearchBayersText.Text))).ToList();
+        }
     }
 }

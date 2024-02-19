@@ -20,9 +20,24 @@ namespace Bookstore.View.MVVM.View
     /// </summary>
     public partial class WriteOffsView : UserControl
     {
+        private DbBookstore _db = DbBookstore.GetContext();
         public WriteOffsView()
         {
             InitializeComponent();
+            WriteOffsDataGrid.ItemsSource = _db.write_offs.ToList();
+        }
+
+        private void SearchWriteOffsBtn_CLick(object sender, RoutedEventArgs e)
+        {
+            //SearchWriteOffsText.Text
+            WriteOffsDataGrid.ItemsSource = _db.write_offs.Where(b => b.Books.name_book.Contains(SearchWriteOffsText.Text)
+                                                                || b.Books.Author.Human.first_name.Contains(SearchWriteOffsText.Text)
+                                                                || b.Books.Author.Human.last_name.Contains(SearchWriteOffsText.Text)
+                                                                || b.Books.Genres.name_genre.Contains(SearchWriteOffsText.Text)
+                                                                || b.Employees.Human.first_name.Contains(SearchWriteOffsText.Text)
+                                                                || b.Employees.Human.last_name.Contains(SearchWriteOffsText.Text)
+                                                                || b.Books.publishing_house.name_pub_house.Contains(SearchWriteOffsText.Text))
+                                                          .ToList();
         }
     }
 }

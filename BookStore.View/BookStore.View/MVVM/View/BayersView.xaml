@@ -21,7 +21,14 @@
                          materialDesign:HintAssist.Hint="Поиск" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                          FontSize="15"
                          FontFamily="Centre"
-                         Foreground="White"/>
+                         Foreground="White"
+                         x:Name="SearchBayersText"/>
+            </Border>
+
+            <Border>
+                <Button HorizontalAlignment="Center" Margin="-40,0,120,0"
+                        Content="Поиск" Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                        Click="SearchBayersBtn_CLick"/>
             </Border>
 
             <Border>

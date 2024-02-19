@@ -8,21 +8,64 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <TextBox MinWidth="500" 
-                 Height="40" 
-                 HorizontalAlignment="Center" 
-                 VerticalAlignment="Center"
-                 
-                 Grid.Column="1"
-                 materialDesign:HintAssist.Hint="Поиск" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                 FontSize="15"
-                 FontFamily="Centre"
-                 Foreground="White"/>
+        <StackPanel Orientation="Horizontal" >
+            <Border Width="700" 
+                    Height="60">
+                <TextBox MinWidth="600" 
+                         Height="40" 
+                         HorizontalAlignment="Center" 
+                         VerticalAlignment="Center"
+ 
+                         Grid.Column="1"
+                         materialDesign:HintAssist.Hint="Поиск" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         FontSize="15"
+                         FontFamily="Centre"
+                         Foreground="White"
+                         x:Name="SearchWriteOffsText"/>
+            </Border>
+
+            <Border>
+                <Button HorizontalAlignment="Center" Margin="-40,0,120,0"
+                        Content="Поиск" Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                        Click="SearchWriteOffsBtn_CLick"/>
+            </Border>
+        </StackPanel>
 
         <DataGrid Margin="20 30"
-                  Background="#B4ADCC" Height="350">
-
-
+                  Background="#B4ADCC" 
+                  Height="350"
+                  x:Name="WriteOffsDataGrid"
+                  AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Book.name_book}" Width="auto"></DataGridTextColumn>
+                
+                <DataGridTemplateColumn Header="Автор" Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <Run Text="{Binding Book.Author.Human.last_name}"/>
+                                <Run Text="{Binding Book.Author.Human.first_name}"/>
+                                <Run Text="{Binding Book.Author.Human.patronymic}"/>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Кол-во, шт" Binding="{Binding amount}" Width="auto"></DataGridTextColumn>
+                
+                <DataGridTemplateColumn Header="Сотрудник" Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <Run Text="{Binding Employee.Human.last_name}"/>
+                                <Run Text="{Binding Employee.Human.first_name}"/>
+                                <Run Text="{Binding Employee.Human.patronymic}"/>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Дата списания" Binding="{Binding date_write_offs}" Width="auto"></DataGridTextColumn>
+            
+            </DataGrid.Columns>
         </DataGrid>
     </StackPanel>
 </UserControl>
