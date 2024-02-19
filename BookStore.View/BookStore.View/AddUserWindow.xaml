@@ -62,21 +62,21 @@
 
                     <TextBox x:Name ="textBoxFirstName" materialDesign:HintAssist.Hint="Имя" 
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Margin="20 10"/>
+                             Margin="20 10" Text="{Binding Human.first_name}"/>
 
                     <TextBox x:Name ="textBoxLastName" materialDesign:HintAssist.Hint="Фамилия" 
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Margin="20 10"/>
+                             Margin="20 10" Text="{Binding Human.last_name}"/>
 
                     <TextBox x:Name ="textBoxPatronimic" materialDesign:HintAssist.Hint="Отчество" 
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Margin="20 10"/>
+                             Margin="20 10" Text="{Binding Human.patronymic}"/>
 
                     <TextBox x:Name ="textBoxPhone" materialDesign:HintAssist.Hint="Номер телефона" 
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Margin="20 10"/>
+                             Margin="20 10" Text="{Binding phone}"/>
 
-                    <Button Content="Сохранить" Margin="20 30" Click="ButtonSaveNewUser_Click"/>
+                    <Button Content="Сохранить" Margin="20 30" Click="SaveNewUserBtn_Click"/>
 
                 </StackPanel>
 

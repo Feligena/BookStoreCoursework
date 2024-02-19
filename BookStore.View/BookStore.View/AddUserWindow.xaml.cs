@@ -19,14 +19,47 @@ namespace Bookstore.View
     /// </summary>
     public partial class AddUserWindow : Window
     {
+        private users _currentUser = new users() { Human = new Human()};
+        private DbBookstore _db = DbBookstore.GetContext();
         public AddUserWindow()
         {
             InitializeComponent();
+            DataContext = _currentUser;
         }
 
-        private void ButtonSaveNewUser_Click(object sender, RoutedEventArgs e)
+        private void SaveNewUserBtn_Click(object sender, RoutedEventArgs e)
         {
+            StringBuilder errors = new StringBuilder();
 
+            if (string.IsNullOrWhiteSpace(_currentUser.Human.first_name))
+                errors.AppendLine("Укажите имя");
+
+            if (string.IsNullOrWhiteSpace(_currentUser.Human.last_name))
+                errors.AppendLine("Укажите фамилию");
+
+            if (_currentUser.phone == 0)
+                errors.AppendLine("Укажите номер телефона");
+
+            if (errors.Length > 0)
+            {
+                MessageBox.Show(errors.ToString());
+                return;
+            }
+
+            if (_currentUser.id == 0)
+                _db.users.Add(_currentUser);
+
+            try
+            {
+                _db.SaveChanges();
+                MessageBox.Show("Добавлен новый покупатель");
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+                this.Close();
+            }
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -46,5 +79,6 @@ namespace Bookstore.View
         {
             this.WindowState = WindowState.Minimized;
         }
+        
     }
 }
