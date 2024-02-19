@@ -87,7 +87,8 @@ namespace Bookstore.View
 
         private void AddGenreBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var addGenre = new AddGenresWindow();
+            addGenre.ShowDialog();
         }
 
         private void AddPubHouseBtn_Click(object sender, RoutedEventArgs e)

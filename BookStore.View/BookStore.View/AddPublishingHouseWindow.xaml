@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookStore.View"
         mc:Ignorable="d"
-            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    WindowStyle="None" Background="Transparent" Height="375" Width="400" 
-    ResizeMode="NoResize" AllowsTransparency="True"
-    WindowStartupLocation="CenterScreen">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        WindowStyle="None" Background="Transparent" Height="375" Width="400" 
+        ResizeMode="NoResize" AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen">
 
 
     <Border Background="#a399d6" CornerRadius="30" MouseDown="Border_MouseDown" Margin="20,20,20,20">
