@@ -46,6 +46,16 @@ namespace Bookstore.View
                 return;
             }
 
+            if (_db.users.Any(a => a.Human.last_name == _currentUser.Human.last_name
+                                    && a.Human.first_name == _currentUser.Human.first_name
+                                    && a.Human.patronymic == _currentUser.Human.patronymic
+                                    && a.phone == _currentUser.phone
+                                    && a.is_deleted == false))
+            {
+                MessageBox.Show("Такой покупатель уже существует");
+                return;
+            }
+
             if (_currentUser.id == 0)
                 _db.users.Add(_currentUser);
 

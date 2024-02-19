@@ -44,6 +44,15 @@ namespace BookStore.View
                 return;
             }
 
+            if (_db.Author.Any(a => a.Human.last_name == _currentAuthor.Human.last_name 
+                                    && a.Human.first_name == _currentAuthor.Human.first_name 
+                                    && a.Human.patronymic == _currentAuthor.Human.patronymic 
+                                    && a.is_deleted == false))
+            {
+                MessageBox.Show("Такой автор уже существует");
+                return;
+            }
+
             if (_currentAuthor.id == 0)
                 _db.Author.Add(_currentAuthor);
                 

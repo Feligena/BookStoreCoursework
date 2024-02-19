@@ -69,6 +69,20 @@ namespace Bookstore.View
                 return;
             }
 
+            if(_db.Books.Any(b => b.name_book == _currentBook.name_book 
+                                && b.Author.Human.last_name == _currentBook.Author.Human.last_name
+                                && b.Author.Human.first_name == _currentBook.Author.Human.first_name
+                                && b.Author.Human.patronymic == _currentBook.Author.Human.patronymic
+                                && b.publishing_house.name_pub_house == _currentBook.publishing_house.name_pub_house 
+                                && b.year_publishing == _currentBook.year_publishing
+                                && b.number_pages == _currentBook.number_pages 
+                                && b.Genres.name_genre == _currentBook.Genres.name_genre
+                                && b.is_deleted == false))
+            {
+                MessageBox.Show("Такая книга уже существует");
+                return;
+            }
+
             if (_currentBook.id == 0)
                 _db.Books.Add(_currentBook);
 
