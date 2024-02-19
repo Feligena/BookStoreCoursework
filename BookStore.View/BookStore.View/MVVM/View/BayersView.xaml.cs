@@ -14,9 +14,11 @@ namespace Bookstore.View.MVVM.View
     /// </summary>
     public partial class BayersView : UserControl
     {
+        private DbBookstore _db = DbBookstore.GetContext();
         public BayersView()
         {
             InitializeComponent();
+            UserDataGrid.ItemsSource = _db.users.Where(u => u.is_deleted == false).ToList();
         }
 
         private void ButtonAddUser_Click(object sender, RoutedEventArgs e)
@@ -26,5 +28,16 @@ namespace Bookstore.View.MVVM.View
             //addUserWindow.ShowDialog();
             addUserWindow.ShowDialog();
         }
+
+        private void EditUserBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteUserBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

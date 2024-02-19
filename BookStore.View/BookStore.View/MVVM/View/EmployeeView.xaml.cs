@@ -40,6 +40,8 @@ namespace Bookstore.View.MVVM.View
             if (Visibility == Visibility.Visible)
             {
                 _db.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                //EmployeeDataGrid.ItemsSource = _db.Employees.Where(em => em.is_deleted == false).ToList();
+                //EmployeeDataGrid.ItemsSource = _db.Authorization.Where(em => em.is_deleted == false).ToList();
                 EmployeeDataGrid.ItemsSource = _db.Employees.Where(em => em.is_deleted == false)
                                                             .Join(_db.Authorization, p => p.id, a => a.id_employee,
                                                                  (p, a) => new

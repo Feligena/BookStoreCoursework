@@ -20,7 +20,14 @@
                          materialDesign:HintAssist.Hint="Поиск" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                          FontSize="15"
                          FontFamily="Centre"
-                         Foreground="White"/>
+                         Foreground="White"
+                         x:Name="SearchBookText"/>
+            </Border>
+            
+            <Border>
+                <Button HorizontalAlignment="Center" Margin="-40,0,120,0"
+                        Content="Поиск" Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                        Click="SearchBookBtn_CLick"/>
             </Border>
 
             <Border>
@@ -31,7 +38,7 @@
         </StackPanel>
         <DataGrid Margin="20 30"
                   Background="#B4ADCC" 
-                  MinHeight="300"
+                  Height="350"
                   x:Name="LibraryDataGrid"
                   AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>

@@ -64,5 +64,31 @@ namespace Bookstore.View.MVVM.View
             var addBook = new AddBook();
             addBook.ShowDialog();
         }
+
+        private void SearchBookBtn_CLick(object sender, RoutedEventArgs e)
+        {
+            LibraryDataGrid.ItemsSource = _db.Books.Where(b => b.is_deleted == false 
+                                                            && (b.name_book.Contains(SearchBookText.Text) 
+                                                                || b.Author.Human.first_name.Contains(SearchBookText.Text) 
+                                                                || b.Author.Human.last_name.Contains(SearchBookText.Text) 
+                                                                || b.Genres.name_genre.Contains(SearchBookText.Text) 
+                                                                || b.publishing_house.name_pub_house.Contains(SearchBookText.Text)))
+                                                   .Join(_db.Author,
+                                                         b => b.id_Author, au => au.id, (b, au) => new
+                                                         {
+                                                             b.id,
+                                                             b.name_book,
+                                                             au.id_Human,
+                                                             id_author = au.id,
+                                                             nameAuthor = au.Human.last_name + " " + au.Human.first_name + " " + au.Human.patronymic,
+                                                             pubHouse = b.publishing_house.name_pub_house,
+                                                             b.year_publishing,
+                                                             genre = b.Genres.name_genre,
+                                                             b.number_pages,
+                                                             b.cost_price,
+                                                             b.selling_price,
+                                                             b.amount
+                                                         }).ToList();
+        }
     }
 }

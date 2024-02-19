@@ -35,7 +35,7 @@
             </Border>
         </StackPanel>
         <DataGrid Margin="20 30"
-                  Background="#B4ADCC" MinHeight="300">
+                  Background="#B4ADCC" Height="350">
 
 
         </DataGrid>

@@ -32,7 +32,7 @@
         </StackPanel>
         <DataGrid Margin="20 30"
                   Background="#B4ADCC" 
-                  MinHeight="300"
+                  Height="350"
                   x:Name="EmployeeDataGrid"
                   AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
