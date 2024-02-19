@@ -42,21 +42,6 @@ namespace Bookstore.View.MVVM.View
                                                              b.selling_price,
                                                              b.amount
                                                          }).ToList();
-                                                   //.Join(_db.Human, b => b.id_Human, h => h.id,
-                                                   //                 (b, h) => new
-                                                   //                 {
-                                                   //                     b.id,
-                                                   //                     b.name_book,
-                                                   //                     b.id_author,
-                                                   //                     b.id_pub_house,
-                                                   //                     b.year_publishing,
-                                                   //                     b.genre,
-                                                   //                     b.number_pages,
-                                                   //                     b.cost_price,
-                                                   //                     b.selling_price,
-                                                   //                     b.amount,
-                                                   //                     nameAuthor = h.last_name + " " + h.first_name + " " + h.patronymic
-                                                   //                 }).ToList();
         }
 
         private void EditBookBtn_Click(object sender, RoutedEventArgs e)
