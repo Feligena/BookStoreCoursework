@@ -21,7 +21,7 @@ namespace bookstore.View
     public partial class AddPublishingHouseWindow : Window
     {
         private publishing_house _currentPubHouse = new publishing_house();
-        private DbbookstoreEntities _db = DbbookstoreEntities.GetContext();
+        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
         public AddPublishingHouseWindow()
         {
             InitializeComponent();

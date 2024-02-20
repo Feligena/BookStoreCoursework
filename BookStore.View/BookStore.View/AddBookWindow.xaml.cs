@@ -12,7 +12,7 @@ namespace bookstore.View
     /// </summary>
     public partial class AddBook : Window
     {
-        private DbbookstoreEntities _db = DbbookstoreEntities.GetContext();
+        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
         private books _currentBook = new books();
        
         public AddBook(books selectedBook)

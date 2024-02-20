@@ -25,7 +25,7 @@ namespace bookstore.View
     public partial class AddEmployeeWindow : Window
     {
         private employees _currentEmployee = new employees() { human = new human(), job_titles = new job_titles()};
-        private DbbookstoreEntities _db = DbbookstoreEntities.GetContext();
+        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
         public AddEmployeeWindow() //employees selectedemployees
         {
             //if(selectedemployees != null)

@@ -21,7 +21,7 @@ namespace bookstore.View
     public partial class AddUserWindow : Window
     {
         private users _currentUser = new users() { human = new human()};
-        private DbbookstoreEntities _db = DbbookstoreEntities.GetContext();
+        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
         public AddUserWindow()
         {
             InitializeComponent();

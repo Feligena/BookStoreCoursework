@@ -21,7 +21,7 @@ namespace bookstore.View
     public partial class AddauthorWindow : Window
     {
         private author _currentauthor = new author() { human = new human() };
-        private DbbookstoreEntities _db = DbbookstoreEntities.GetContext();
+        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
         public AddauthorWindow()
         {
             InitializeComponent();

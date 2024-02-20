@@ -21,7 +21,7 @@ namespace bookstore.View
     public partial class AddgenresWindow : Window
     {
         private genres _currentGenre = new genres();
-        private DbbookstoreEntities _db = DbbookstoreEntities.GetContext();
+        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
         public AddgenresWindow()
         {
             InitializeComponent();
