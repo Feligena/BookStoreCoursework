@@ -1,4 +1,5 @@
-﻿using System;
+﻿using bookstore.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,15 +13,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Bookstore.View
+namespace bookstore.View
 {
     /// <summary>
     /// Логика взаимодействия для AddUserWindow.xaml
     /// </summary>
     public partial class AddUserWindow : Window
     {
-        private users _currentUser = new users() { Human = new Human()};
-        private DbBookstore _db = DbBookstore.GetContext();
+        private users _currentUser = new users() { human = new human()};
+        private DbbookstoreEntities _db = DbbookstoreEntities.GetContext();
         public AddUserWindow()
         {
             InitializeComponent();
@@ -31,13 +32,13 @@ namespace Bookstore.View
         {
             StringBuilder errors = new StringBuilder();
 
-            if (string.IsNullOrWhiteSpace(_currentUser.Human.first_name))
+            if (string.IsNullOrWhiteSpace(_currentUser.human.first_name))
                 errors.AppendLine("Укажите имя");
 
-            if (string.IsNullOrWhiteSpace(_currentUser.Human.last_name))
+            if (string.IsNullOrWhiteSpace(_currentUser.human.last_name))
                 errors.AppendLine("Укажите фамилию");
 
-            if (_currentUser.phone == 0)
+            if (string.IsNullOrWhiteSpace(_currentUser.phone))
                 errors.AppendLine("Укажите номер телефона");
 
             if (errors.Length > 0)
@@ -46,9 +47,9 @@ namespace Bookstore.View
                 return;
             }
 
-            if (_db.users.Any(a => a.Human.last_name == _currentUser.Human.last_name
-                                    && a.Human.first_name == _currentUser.Human.first_name
-                                    && a.Human.patronymic == _currentUser.Human.patronymic
+            if (_db.users.Any(a => a.human.last_name == _currentUser.human.last_name
+                                    && a.human.first_name == _currentUser.human.first_name
+                                    && a.human.patronymic == _currentUser.human.patronymic
                                     && a.phone == _currentUser.phone
                                     && a.is_deleted == false))
             {

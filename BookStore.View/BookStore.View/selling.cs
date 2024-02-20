@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bookstore.View
+namespace bookstore.View
 {
     using System;
     using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace Bookstore.View
         public int id_employee { get; set; }
         public System.DateTime date_write_offs { get; set; }
     
-        public virtual Books Books { get; set; }
-        public virtual Employees Employees { get; set; }
+        public virtual books books { get; set; }
+        public virtual employees employees { get; set; }
     }
 }

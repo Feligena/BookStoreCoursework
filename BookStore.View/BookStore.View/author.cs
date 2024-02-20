@@ -7,28 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bookstore.View
+namespace bookstore.View
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-
-    [Table("author")]
-    public partial class Author
+    
+    public partial class author
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Author()
+        public author()
         {
-            this.Books = new HashSet<Books>();
+            this.books = new HashSet<books>();
         }
     
         public int id { get; set; }
-        public int id_Human { get; set; }
+        public int id_human { get; set; }
         public bool is_deleted { get; set; }
     
-        public virtual Human Human { get; set; }
+        public virtual human human { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Books> Books { get; set; }
-
+        public virtual ICollection<books> books { get; set; }
     }
 }

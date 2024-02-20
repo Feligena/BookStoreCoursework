@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bookstore.View
+namespace bookstore.View
 {
     using System;
     using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace Bookstore.View
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public publishing_house()
         {
-            this.Books = new HashSet<Books>();
+            this.books = new HashSet<books>();
         }
     
         public int id { get; set; }
@@ -26,6 +26,6 @@ namespace Bookstore.View
         public bool is_deleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Books> Books { get; set; }
+        public virtual ICollection<books> books { get; set; }
     }
 }

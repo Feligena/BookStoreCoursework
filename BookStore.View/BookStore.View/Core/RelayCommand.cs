@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Bookstore.View.Core
+namespace bookstore.View.Core
 {
     class RelayCommand : ICommand
     {

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ceacffdd33b747c1b90a0ae0dd411fae" Name="Diagram1">
+        <EntityTypeShape EntityType="Dbbookstore.author" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dbbookstore.authorization" Width="1.5" PointX="8.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dbbookstore.book_reservation" Width="1.5" PointX="7.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dbbookstore.books" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dbbookstore.employees" Width="1.5" PointX="6" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dbbookstore.genres" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dbbookstore.human" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dbbookstore.job_titles" Width="1.5" PointX="3.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dbbookstore.promotion_on_books" Width="1.5" PointX="7.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dbbookstore.promotions" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dbbookstore.publishing_house" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dbbookstore.selling" Width="1.5" PointX="10.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dbbookstore.users" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dbbookstore.write_offs" Width="1.5" PointX="11.25" PointY="11.625" IsExpanded="true" />
+        <AssociationConnector Association="Dbbookstore.author_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Dbbookstore.books_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Dbbookstore.authorization_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Dbbookstore.book_reservation_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Dbbookstore.book_reservation_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="Dbbookstore.books_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="Dbbookstore.books_ibfk_3" ManuallyRouted="false" />
+        <AssociationConnector Association="Dbbookstore.promotion_on_books_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Dbbookstore.selling_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Dbbookstore.write_offs_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Dbbookstore.employees_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Dbbookstore.employees_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="Dbbookstore.selling_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="Dbbookstore.write_offs_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="Dbbookstore.users_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Dbbookstore.promotion_on_books_ibfk_2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

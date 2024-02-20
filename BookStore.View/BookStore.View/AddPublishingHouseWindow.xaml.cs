@@ -1,4 +1,4 @@
-﻿using Bookstore.View;
+﻿using bookstore.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace BookStore.View
+namespace bookstore.View
 {
     /// <summary>
     /// Логика взаимодействия для AddPublishingHouseWindow.xaml
@@ -21,7 +21,7 @@ namespace BookStore.View
     public partial class AddPublishingHouseWindow : Window
     {
         private publishing_house _currentPubHouse = new publishing_house();
-        private DbBookstore _db = DbBookstore.GetContext();
+        private DbbookstoreEntities _db = DbbookstoreEntities.GetContext();
         public AddPublishingHouseWindow()
         {
             InitializeComponent();

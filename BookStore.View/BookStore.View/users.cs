@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bookstore.View
+namespace bookstore.View
 {
     using System;
     using System.Collections.Generic;
@@ -21,12 +21,12 @@ namespace Bookstore.View
         }
     
         public int id { get; set; }
-        public int id_Human { get; set; }
-        public int phone { get; set; }
+        public int id_human { get; set; }
+        public string phone { get; set; }
         public bool is_deleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<book_reservation> book_reservation { get; set; }
-        public virtual Human Human { get; set; }
+        public virtual human human { get; set; }
     }
 }

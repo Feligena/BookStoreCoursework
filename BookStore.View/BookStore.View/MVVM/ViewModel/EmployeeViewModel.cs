@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bookstore.View.MVVM.ViewModel
+namespace bookstore.View.MVVM.ViewModel
 {
     class EmployeeViewModel
     {

@@ -1,11 +1,11 @@
-﻿<Window x:Class="Bookstore.View.AddUserWindow"
+﻿<Window x:Class="bookstore.View.AddUserWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Bookstore.View"
-        xmlns:viewModel="clr-namespace:Bookstore.View.MVVM.ViewModel"
+        xmlns:local="clr-namespace:bookstore.View"
+        xmlns:viewModel="clr-namespace:bookstore.View.MVVM.ViewModel"
         mc:Ignorable="d"
         WindowStyle="None" Background="Transparent" Height="510" Width="400" 
         ResizeMode="NoResize" AllowsTransparency="True"
@@ -62,15 +62,15 @@
 
                     <TextBox x:Name ="textBoxFirstName" materialDesign:HintAssist.Hint="Имя" 
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Margin="20 10" Text="{Binding Human.first_name}"/>
+                             Margin="20 10" Text="{Binding human.first_name}"/>
 
                     <TextBox x:Name ="textBoxLastName" materialDesign:HintAssist.Hint="Фамилия" 
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Margin="20 10" Text="{Binding Human.last_name}"/>
+                             Margin="20 10" Text="{Binding human.last_name}"/>
 
                     <TextBox x:Name ="textBoxPatronimic" materialDesign:HintAssist.Hint="Отчество" 
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Margin="20 10" Text="{Binding Human.patronymic}"/>
+                             Margin="20 10" Text="{Binding human.patronymic}"/>
 
                     <TextBox x:Name ="textBoxPhone" materialDesign:HintAssist.Hint="Номер телефона" 
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
