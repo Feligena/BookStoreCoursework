@@ -43,10 +43,22 @@
                   AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Наименование" Binding="{Binding name_book}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Автор" Binding="{Binding nameauthor}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Жанр" Binding="{Binding genre}" Width="auto"></DataGridTextColumn>
+
+                <DataGridTemplateColumn Header="Автор" Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <Run Text="{Binding author.human.last_name}"/>
+                                <Run Text="{Binding author.human.first_name}"/>
+                                <Run Text="{Binding author.human.patronymic}"/>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="Жанр" Binding="{Binding genres.name_genre}" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Header="Цена, руб" Binding="{Binding selling_price}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Издательство" Binding="{Binding pubHouse}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Издательство" Binding="{Binding publishing_house.name_pub_house}" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Header="Дата публикации" Binding="{Binding year_publishing}" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Header="Кол-во страниц" Binding="{Binding number_pages}" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Header="Себестоимость" Binding="{Binding cost_price}" Width="auto"></DataGridTextColumn>

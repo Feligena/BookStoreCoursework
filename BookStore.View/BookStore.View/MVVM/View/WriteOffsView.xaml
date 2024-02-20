@@ -50,8 +50,8 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+
                 <DataGridTextColumn Header="Кол-во, шт" Binding="{Binding amount}" Width="auto"></DataGridTextColumn>
-                
                 <DataGridTemplateColumn Header="Сотрудник" Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

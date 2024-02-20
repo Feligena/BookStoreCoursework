@@ -15,21 +15,18 @@ namespace bookstore.View
         private DbbookstoreEntities _db = DbbookstoreEntities.GetContext();
         private books _currentBook = new books();
        
-        public AddBook()
+        public AddBook(books selectedBook)
         {
             InitializeComponent();
+
+            if(selectedBook != null )
+                _currentBook = selectedBook;
+
             DataContext = _currentBook;
 
             PublishingComboBox.ItemsSource = _db.publishing_house.Where(a => a.is_deleted == false).ToList();
-            genresComboBox.ItemsSource = _db.genres.Where(a => a.is_deleted == false).ToList();
-            //authorComboBox.ItemsSource = _db.author.Where(a => a.is_deleted == false).Join(_db.human, a => a.id_human, h => h.id,
-            //                                                (a, h) => new
-            //                                                {
-            //                                                    a.id,
-            //                                                    nameauthor = h.last_name + " " + h.first_name + " " + h.patronymic,
-            //                                                    a.id_human
-            //                                                }).ToList();
-            authorComboBox.ItemsSource = _db.author.Where(a => a.is_deleted == false).ToList();
+            GenresComboBox.ItemsSource = _db.genres.Where(a => a.is_deleted == false).ToList();
+            AuthorComboBox.ItemsSource = _db.author.Where(a => a.is_deleted == false).ToList();
         }
 
         private void SaveBookBtn_Click(object sender, RoutedEventArgs e)
@@ -39,7 +36,7 @@ namespace bookstore.View
             if (string.IsNullOrWhiteSpace(_currentBook.name_book))
                 errors.AppendLine("Укажите название книги");
 
-            if (authorComboBox.Text == null)
+            if (AuthorComboBox.Text == null)
                 errors.AppendLine("Укажите автора");
 
             if (_currentBook.publishing_house == null)
@@ -89,7 +86,7 @@ namespace bookstore.View
             try
             {
                 _db.SaveChanges();
-                MessageBox.Show("Добавлена новая книга");
+                MessageBox.Show("Информация сохранена", "Успешно!");
                 this.Close();
             }
             catch (Exception ex)
@@ -103,18 +100,21 @@ namespace bookstore.View
         {
             var addGenre = new AddgenresWindow();
             addGenre.ShowDialog();
+            GenresComboBox.ItemsSource = _db.genres.Where(a => a.is_deleted == false).ToList();
         }
 
         private void AddPubHouseBtn_Click(object sender, RoutedEventArgs e)
         {
             var addPubHouse = new AddPublishingHouseWindow();
             addPubHouse.ShowDialog();
+            PublishingComboBox.ItemsSource = _db.publishing_house.Where(a => a.is_deleted == false).ToList();
         }
 
-        private void AddauthorBtn_Click(object sender, RoutedEventArgs e)
+        private void AddAuthorBtn_Click(object sender, RoutedEventArgs e)
         {
             var addauthor = new AddauthorWindow();
             addauthor.ShowDialog();
+            AuthorComboBox.ItemsSource = _db.author.Where(a => a.is_deleted == false).ToList();
         }
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
