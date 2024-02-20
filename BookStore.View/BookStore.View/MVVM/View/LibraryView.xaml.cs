@@ -50,6 +50,22 @@ namespace bookstore.View.MVVM.View
 
         private void DeleteBookBtn_Click(object sender, RoutedEventArgs e)
         {
+            if(MessageBox.Show("Вы действительно хотите удалить эту книгу?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                var tmp = (sender as Button).DataContext as books;
+
+                tmp.is_deleted = true;
+
+                try
+                {
+                    _db.SaveChanges();
+                    MessageBox.Show("Книга удалена", "Успешно!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+            }
 
             UbdateDGLibrary();
         }
