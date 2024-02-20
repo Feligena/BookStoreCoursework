@@ -7,42 +7,42 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bookstore.View
+namespace bookstore.View
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DbBookstore : DbContext
+    public partial class DbbookstoreEntities : DbContext
     {
-        private static DbBookstore _context;
-        public DbBookstore()
-            : base("name=DbBookstore")
+        private static DbbookstoreEntities _context;
+        public DbbookstoreEntities()
+            : base("name=DbbookstoreEntities")
         {
         }
 
-        public static DbBookstore GetContext()
+        public static DbbookstoreEntities GetContext()
         {
-            if(_context == null) 
-                _context = new DbBookstore();
+            if(_context == null)
+                _context = new DbbookstoreEntities();
 
             return _context;
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Author> Author { get; set; }
-        public virtual DbSet<Authorization> Authorization { get; set; }
+        public virtual DbSet<author> author { get; set; }
+        public virtual DbSet<authorization> authorization { get; set; }
         public virtual DbSet<book_reservation> book_reservation { get; set; }
-        public virtual DbSet<Books> Books { get; set; }
-        public virtual DbSet<Employees> Employees { get; set; }
-        public virtual DbSet<Genres> Genres { get; set; }
-        public virtual DbSet<Human> Human { get; set; }
+        public virtual DbSet<books> books { get; set; }
+        public virtual DbSet<employees> employees { get; set; }
+        public virtual DbSet<genres> genres { get; set; }
+        public virtual DbSet<human> human { get; set; }
         public virtual DbSet<job_titles> job_titles { get; set; }
-        public virtual DbSet<promotion_on_Books> promotion_on_Books { get; set; }
+        public virtual DbSet<promotion_on_books> promotion_on_books { get; set; }
         public virtual DbSet<promotions> promotions { get; set; }
         public virtual DbSet<publishing_house> publishing_house { get; set; }
         public virtual DbSet<selling> selling { get; set; }

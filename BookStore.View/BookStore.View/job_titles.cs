@@ -7,19 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bookstore.View
+namespace bookstore.View
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-
-    [Table("job_titles")]
+    
     public partial class job_titles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public job_titles()
         {
-            this.Employees = new HashSet<Employees>();
+            this.employees = new HashSet<employees>();
         }
     
         public int id { get; set; }
@@ -28,6 +26,6 @@ namespace Bookstore.View
         public bool is_deleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employees> Employees { get; set; }
+        public virtual ICollection<employees> employees { get; set; }
     }
 }

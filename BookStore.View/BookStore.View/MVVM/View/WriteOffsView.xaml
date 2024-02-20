@@ -1,28 +1,71 @@
-﻿<UserControl x:Class="Bookstore.View.MVVM.View.WriteOffsView"
+﻿<UserControl x:Class="bookstore.View.MVVM.View.WriteOffsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Bookstore.View.MVVM.View"
+             xmlns:local="clr-namespace:bookstore.View.MVVM.View"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <TextBox MinWidth="500" 
-                 Height="40" 
-                 HorizontalAlignment="Center" 
-                 VerticalAlignment="Center"
-                 
-                 Grid.Column="1"
-                 materialDesign:HintAssist.Hint="Поиск" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                 FontSize="15"
-                 FontFamily="Centre"
-                 Foreground="White"/>
+        <StackPanel Orientation="Horizontal" >
+            <Border Width="700" 
+                    Height="60">
+                <TextBox MinWidth="600" 
+                         Height="40" 
+                         HorizontalAlignment="Center" 
+                         VerticalAlignment="Center"
+ 
+                         Grid.Column="1"
+                         materialDesign:HintAssist.Hint="Поиск" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         FontSize="15"
+                         FontFamily="Centre"
+                         Foreground="White"
+                         x:Name="SearchWriteOffsText"/>
+            </Border>
+
+            <Border>
+                <Button HorizontalAlignment="Center" Margin="-40,0,120,0"
+                        Content="Поиск" Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                        Click="SearchWriteOffsBtn_CLick"/>
+            </Border>
+        </StackPanel>
 
         <DataGrid Margin="20 30"
-                  Background="#B4ADCC" MinHeight="300">
-
-
+                  Background="#B4ADCC" 
+                  Height="350"
+                  x:Name="WriteOffsDataGrid"
+                  AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Book.name_book}" Width="auto"></DataGridTextColumn>
+                
+                <DataGridTemplateColumn Header="Автор" Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <Run Text="{Binding Book.author.human.last_name}"/>
+                                <Run Text="{Binding Book.author.human.first_name}"/>
+                                <Run Text="{Binding Book.author.human.patronymic}"/>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Кол-во, шт" Binding="{Binding amount}" Width="auto"></DataGridTextColumn>
+                
+                <DataGridTemplateColumn Header="Сотрудник" Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <Run Text="{Binding Employee.human.last_name}"/>
+                                <Run Text="{Binding Employee.human.first_name}"/>
+                                <Run Text="{Binding Employee.human.patronymic}"/>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Дата списания" Binding="{Binding date_write_offs}" Width="auto"></DataGridTextColumn>
+            
+            </DataGrid.Columns>
         </DataGrid>
     </StackPanel>
 </UserControl>

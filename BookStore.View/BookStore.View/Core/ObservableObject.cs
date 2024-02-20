@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Bookstore.View.Core
+namespace bookstore.View.Core
 {
     class ObservableObject : INotifyPropertyChanged
     {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Bookstore.View
+namespace bookstore.View
 {
     /// <summary>
     /// Логика взаимодействия для App.xaml

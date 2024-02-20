@@ -7,32 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bookstore.View
+namespace bookstore.View
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-
-    [Table("employees")]
-    public partial class Employees
+    
+    public partial class employees
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employees()
+        public employees()
         {
-            this.Authorization = new HashSet<Authorization>();
+            this.authorization = new HashSet<authorization>();
             this.selling = new HashSet<selling>();
             this.write_offs = new HashSet<write_offs>();
         }
     
         public int id { get; set; }
-        public int id_Human { get; set; }
+        public int id_human { get; set; }
         public int id_job_title { get; set; }
         public bool is_deleted { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Authorization> Authorization { get; set; }
-        //public virtual Authorization Authorization { get; set; }
-        public virtual Human Human { get; set; }
+        public virtual ICollection<authorization> authorization { get; set; }
+        public virtual human human { get; set; }
         public virtual job_titles job_titles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<selling> selling { get; set; }

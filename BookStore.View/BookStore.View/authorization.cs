@@ -7,14 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bookstore.View
+namespace bookstore.View
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-
-    [Table("Authorization")]
-    public partial class Authorization
+    
+    public partial class authorization
     {
         public int id { get; set; }
         public int id_employee { get; set; }
@@ -22,6 +20,6 @@ namespace Bookstore.View
         public string password { get; set; }
         public bool is_deleted { get; set; }
     
-        public virtual Employees Employees { get; set; }
+        public virtual employees employees { get; set; }
     }
 }

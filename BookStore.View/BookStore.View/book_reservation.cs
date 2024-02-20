@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bookstore.View
+namespace bookstore.View
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-
-    [Table("book_reservation")]
+    
     public partial class book_reservation
     {
         public int id { get; set; }
@@ -22,7 +20,7 @@ namespace Bookstore.View
         public int amount { get; set; }
         public bool is_redeem { get; set; }
     
-        public virtual Books Books { get; set; }
+        public virtual books books { get; set; }
         public virtual users users { get; set; }
     }
 }

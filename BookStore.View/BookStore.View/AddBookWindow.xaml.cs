@@ -1,18 +1,19 @@
-﻿using System;
+﻿using bookstore.View;
+using System;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Bookstore.View
+namespace bookstore.View
 {
     /// <summary>
     /// Логика взаимодействия для AddBook.xaml
     /// </summary>
     public partial class AddBook : Window
     {
-        private DbBookstore _db = DbBookstore.GetContext();
-        private Books _currentBook = new Books();
+        private DbbookstoreEntities _db = DbbookstoreEntities.GetContext();
+        private books _currentBook = new books();
        
         public AddBook()
         {
@@ -20,15 +21,15 @@ namespace Bookstore.View
             DataContext = _currentBook;
 
             PublishingComboBox.ItemsSource = _db.publishing_house.Where(a => a.is_deleted == false).ToList();
-            GenresComboBox.ItemsSource = _db.Genres.Where(a => a.is_deleted == false).ToList();
-            //AuthorComboBox.ItemsSource = _db.Author.Where(a => a.is_deleted == false).Join(_db.Human, a => a.id_Human, h => h.id,
+            genresComboBox.ItemsSource = _db.genres.Where(a => a.is_deleted == false).ToList();
+            //authorComboBox.ItemsSource = _db.author.Where(a => a.is_deleted == false).Join(_db.human, a => a.id_human, h => h.id,
             //                                                (a, h) => new
             //                                                {
             //                                                    a.id,
-            //                                                    nameAuthor = h.last_name + " " + h.first_name + " " + h.patronymic,
-            //                                                    a.id_Human
+            //                                                    nameauthor = h.last_name + " " + h.first_name + " " + h.patronymic,
+            //                                                    a.id_human
             //                                                }).ToList();
-            AuthorComboBox.ItemsSource = _db.Author.Where(a => a.is_deleted == false).ToList();
+            authorComboBox.ItemsSource = _db.author.Where(a => a.is_deleted == false).ToList();
         }
 
         private void SaveBookBtn_Click(object sender, RoutedEventArgs e)
@@ -38,7 +39,7 @@ namespace Bookstore.View
             if (string.IsNullOrWhiteSpace(_currentBook.name_book))
                 errors.AppendLine("Укажите название книги");
 
-            if (AuthorComboBox.Text == null)
+            if (authorComboBox.Text == null)
                 errors.AppendLine("Укажите автора");
 
             if (_currentBook.publishing_house == null)
@@ -50,7 +51,7 @@ namespace Bookstore.View
             if (_currentBook.number_pages == 0)
                 errors.AppendLine("Укажите количество страниц");
 
-            if (_currentBook.Genres == null)
+            if (_currentBook.genres == null)
                 errors.AppendLine("Выберите жанр");
 
             if (_currentBook.cost_price == 0)
@@ -68,8 +69,22 @@ namespace Bookstore.View
                 return;
             }
 
+            if(_db.books.Any(b => b.name_book == _currentBook.name_book 
+                                && b.author.human.last_name == _currentBook.author.human.last_name
+                                && b.author.human.first_name == _currentBook.author.human.first_name
+                                && b.author.human.patronymic == _currentBook.author.human.patronymic
+                                && b.publishing_house.name_pub_house == _currentBook.publishing_house.name_pub_house 
+                                && b.year_publishing == _currentBook.year_publishing
+                                && b.number_pages == _currentBook.number_pages 
+                                && b.genres.name_genre == _currentBook.genres.name_genre
+                                && b.is_deleted == false))
+            {
+                MessageBox.Show("Такая книга уже существует");
+                return;
+            }
+
             if (_currentBook.id == 0)
-                _db.Books.Add(_currentBook);
+                _db.books.Add(_currentBook);
 
             try
             {
@@ -86,17 +101,20 @@ namespace Bookstore.View
 
         private void AddGenreBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var addGenre = new AddgenresWindow();
+            addGenre.ShowDialog();
         }
 
         private void AddPubHouseBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var addPubHouse = new AddPublishingHouseWindow();
+            addPubHouse.ShowDialog();
         }
 
-        private void AddAuthorBtn_Click(object sender, RoutedEventArgs e)
+        private void AddauthorBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var addauthor = new AddauthorWindow();
+            addauthor.ShowDialog();
         }
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)

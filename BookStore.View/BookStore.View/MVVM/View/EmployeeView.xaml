@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="Bookstore.View.MVVM.View.EmployeeView"
+﻿<UserControl x:Class="bookstore.View.MVVM.View.EmployeeView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Bookstore.View.MVVM.View"
+             xmlns:local="clr-namespace:bookstore.View.MVVM.View"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
@@ -21,7 +21,14 @@
                          materialDesign:HintAssist.Hint="Поиск" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                          FontSize="15"
                          FontFamily="Centre"
-                         Foreground="White"/>
+                         Foreground="White"
+                         x:Name="SearchEmployeeText"/>
+            </Border>
+            
+            <Border>
+                <Button HorizontalAlignment="Center" Margin="-40,0,120,0"
+                        Content="Поиск" Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                        Click="SearchEmployeeBtn_CLick"/>
             </Border>
 
             <Border>
@@ -32,7 +39,7 @@
         </StackPanel>
         <DataGrid Margin="20 30"
                   Background="#B4ADCC" 
-                  MinHeight="300"
+                  Height="350"
                   x:Name="EmployeeDataGrid"
                   AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>

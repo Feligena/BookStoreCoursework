@@ -81,53 +81,66 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddAuthorWindow.xaml.cs">
+      <DependentUpon>AddAuthorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddGenresWindow.xaml.cs">
+      <DependentUpon>AddGenresWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddPublishingHouseWindow.xaml.cs">
+      <DependentUpon>AddPublishingHouseWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="author.cs">
-      <DependentUpon>BookStoreDb.tt</DependentUpon>
+      <DependentUpon>DbBookstoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="authorization.cs">
-      <DependentUpon>BookStoreDb.tt</DependentUpon>
+      <DependentUpon>DbBookstoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="books.cs">
-      <DependentUpon>BookStoreDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BookStoreDb.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BookStoreDb.tt</DependentUpon>
+      <DependentUpon>DbBookstoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="book_reservation.cs">
-      <DependentUpon>BookStoreDb.tt</DependentUpon>
+      <DependentUpon>DbBookstoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbBookstoreModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbBookstoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="employees.cs">
-      <DependentUpon>BookStoreDb.tt</DependentUpon>
+      <DependentUpon>DbBookstoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="genres.cs">
-      <DependentUpon>BookStoreDb.tt</DependentUpon>
+      <DependentUpon>DbBookstoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="human.cs">
-      <DependentUpon>BookStoreDb.tt</DependentUpon>
+      <DependentUpon>DbBookstoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="job_titles.cs">
-      <DependentUpon>BookStoreDb.tt</DependentUpon>
+      <DependentUpon>DbBookstoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="promotions.cs">
-      <DependentUpon>BookStoreDb.tt</DependentUpon>
+      <DependentUpon>DbBookstoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="promotion_on_books.cs">
-      <DependentUpon>BookStoreDb.tt</DependentUpon>
+      <DependentUpon>DbBookstoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="publishing_house.cs">
-      <DependentUpon>BookStoreDb.tt</DependentUpon>
+      <DependentUpon>DbBookstoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="selling.cs">
-      <DependentUpon>BookStoreDb.tt</DependentUpon>
+      <DependentUpon>DbBookstoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="users.cs">
-      <DependentUpon>BookStoreDb.tt</DependentUpon>
+      <DependentUpon>DbBookstoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="write_offs.cs">
-      <DependentUpon>BookStoreDb.tt</DependentUpon>
+      <DependentUpon>DbBookstoreModel.tt</DependentUpon>
     </Compile>
+    <Page Include="AddAuthorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddBookWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -135,6 +148,14 @@
     <Page Include="AddEmployeeWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AddGenresWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddPublishingHouseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddUserWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -164,18 +185,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BookStoreDb.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BookStoreDb.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BookStoreDb.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BookStoreDb.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
+    <Compile Include="DbBookstoreModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbBookstoreModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbBookstoreModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbBookstoreModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -252,12 +273,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="BookStoreDb.edmx">
+    <EntityDeploy Include="DbBookstoreModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BookStoreDb.Designer.cs</LastGenOutput>
+      <LastGenOutput>DbBookstoreModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="BookStoreDb.edmx.diagram">
-      <DependentUpon>BookStoreDb.edmx</DependentUpon>
+    <None Include="DbBookstoreModel.edmx.diagram">
+      <DependentUpon>DbBookstoreModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -275,15 +296,15 @@
     <Folder Include="MVVM\Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BookStoreDb.Context.tt">
+    <Content Include="DbBookstoreModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BookStoreDb.edmx</DependentUpon>
-      <LastGenOutput>BookStoreDb.Context.cs</LastGenOutput>
+      <DependentUpon>DbBookstoreModel.edmx</DependentUpon>
+      <LastGenOutput>DbBookstoreModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="BookStoreDb.tt">
+    <Content Include="DbBookstoreModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BookStoreDb.edmx</DependentUpon>
-      <LastGenOutput>BookStoreDb.cs</LastGenOutput>
+      <DependentUpon>DbBookstoreModel.edmx</DependentUpon>
+      <LastGenOutput>DbBookstoreModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
