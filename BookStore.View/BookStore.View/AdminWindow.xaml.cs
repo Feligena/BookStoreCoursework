@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Bookstore.View
+namespace bookstore.View
 {
     /// <summary>
     /// Логика взаимодействия для AdminWindow.xaml
@@ -25,7 +25,7 @@ namespace Bookstore.View
         {
             InitializeComponent();
             _adminWindow = this;
-            //var db = new DbBookstore();
+            //var db = new Dbbookstore();
         }
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)

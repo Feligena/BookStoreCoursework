@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bookstore.View
+namespace bookstore.View
 {
     using System;
     using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace Bookstore.View
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public promotions()
         {
-            this.promotion_on_Books = new HashSet<promotion_on_Books>();
+            this.promotion_on_books = new HashSet<promotion_on_books>();
         }
     
         public int id { get; set; }
@@ -28,6 +28,6 @@ namespace Bookstore.View
         public bool is_deleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<promotion_on_Books> promotion_on_Books { get; set; }
+        public virtual ICollection<promotion_on_books> promotion_on_books { get; set; }
     }
 }

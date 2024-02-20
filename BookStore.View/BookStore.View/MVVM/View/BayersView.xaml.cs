@@ -5,16 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using Bookstore.View.MVVM.ViewModel;
+using bookstore.View.MVVM.ViewModel;
+using bookstore.View;
 
-namespace Bookstore.View.MVVM.View
+namespace bookstore.View.MVVM.View
 {
     /// <summary>
     /// Логика взаимодействия для BayersView.xaml
     /// </summary>
     public partial class BayersView : UserControl
     {
-        private DbBookstore _db = DbBookstore.GetContext();
+        private DbbookstoreEntities _db = DbbookstoreEntities.GetContext();
         public BayersView()
         {
             InitializeComponent();
@@ -42,9 +43,9 @@ namespace Bookstore.View.MVVM.View
         private void SearchBayersBtn_CLick(object sender, RoutedEventArgs e)
         {
             UserDataGrid.ItemsSource = _db.users.Where(u => u.is_deleted == false
-                                                            && (u.Human.first_name.Contains(SearchBayersText.Text)
-                                                            || u.Human.last_name.Contains(SearchBayersText.Text)
-                                                            || u.Human.patronymic.Contains(SearchBayersText.Text)
+                                                            && (u.human.first_name.Contains(SearchBayersText.Text)
+                                                            || u.human.last_name.Contains(SearchBayersText.Text)
+                                                            || u.human.patronymic.Contains(SearchBayersText.Text)
                                                             || u.phone.ToString().Contains(SearchBayersText.Text))).ToList();
         }
     }

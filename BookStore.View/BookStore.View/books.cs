@@ -7,25 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bookstore.View
+namespace bookstore.View
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Books
+    public partial class books
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Books()
+        public books()
         {
             this.book_reservation = new HashSet<book_reservation>();
-            this.promotion_on_Books = new HashSet<promotion_on_Books>();
+            this.promotion_on_books = new HashSet<promotion_on_books>();
             this.selling = new HashSet<selling>();
             this.write_offs = new HashSet<write_offs>();
         }
     
         public int id { get; set; }
         public string name_book { get; set; }
-        public int id_Author { get; set; }
+        public int id_author { get; set; }
         public int id_pub_house { get; set; }
         public int year_publishing { get; set; }
         public int id_genre { get; set; }
@@ -35,13 +35,13 @@ namespace Bookstore.View
         public int amount { get; set; }
         public bool is_deleted { get; set; }
     
-        public virtual Author Author { get; set; }
+        public virtual author author { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<book_reservation> book_reservation { get; set; }
         public virtual publishing_house publishing_house { get; set; }
-        public virtual Genres Genres { get; set; }
+        public virtual genres genres { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<promotion_on_Books> promotion_on_Books { get; set; }
+        public virtual ICollection<promotion_on_books> promotion_on_books { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<selling> selling { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

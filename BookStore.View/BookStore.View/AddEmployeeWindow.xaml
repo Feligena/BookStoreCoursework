@@ -1,9 +1,9 @@
-﻿<Window x:Class="Bookstore.View.AddEmployeeWindow"
+﻿<Window x:Class="bookstore.View.AddEmployeeWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Bookstore.View"
+        xmlns:local="clr-namespace:bookstore.View"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStyle="None" Background="Transparent" Height="600" Width="400" 
@@ -59,15 +59,15 @@
 
                     <TextBox x:Name ="textBoxFirstName" materialDesign:HintAssist.Hint="Имя" 
                           Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                          Margin="20 10" Text="{Binding Human.first_name}"/>
+                          Margin="20 10" Text="{Binding human.first_name}"/>
 
                     <TextBox x:Name ="textBoxLastName" materialDesign:HintAssist.Hint="Фамилия" 
                           Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                          Margin="20 10" Text="{Binding Human.last_name}"/>
+                          Margin="20 10" Text="{Binding human.last_name}"/>
 
                     <TextBox x:Name ="textBoxPatronimic" materialDesign:HintAssist.Hint="Отчество" 
                           Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                          Margin="20 10" Text="{Binding Human.patronymic}"/>
+                          Margin="20 10" Text="{Binding human.patronymic}"/>
 
                     <!--<DatePicker x:Name ="textBoxBirthDay" materialDesign:HintAssist.Hint="Дата рождения" 
                              Style="{StaticResource MaterialDesignFloatingHintDatePicker}"

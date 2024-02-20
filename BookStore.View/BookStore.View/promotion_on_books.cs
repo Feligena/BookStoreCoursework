@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bookstore.View
+namespace bookstore.View
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class promotion_on_Books
+    public partial class promotion_on_books
     {
         public int id { get; set; }
         public int id_book { get; set; }
         public int id_promotion { get; set; }
     
-        public virtual Books Books { get; set; }
+        public virtual books books { get; set; }
         public virtual promotions promotions { get; set; }
     }
 }

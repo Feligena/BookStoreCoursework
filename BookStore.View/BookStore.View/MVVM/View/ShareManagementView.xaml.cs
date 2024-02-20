@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Bookstore.View.MVVM.View
+namespace bookstore.View.MVVM.View
 {
     /// <summary>
     /// Логика взаимодействия для ShareManagementView.xaml

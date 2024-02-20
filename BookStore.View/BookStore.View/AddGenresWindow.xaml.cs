@@ -1,4 +1,4 @@
-﻿using Bookstore.View;
+﻿using bookstore.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,16 +13,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace BookStore.View
+namespace bookstore.View
 {
     /// <summary>
-    /// Логика взаимодействия для AddGenresWindow.xaml
+    /// Логика взаимодействия для AddgenresWindow.xaml
     /// </summary>
-    public partial class AddGenresWindow : Window
+    public partial class AddgenresWindow : Window
     {
-        private Genres _currentGenre = new Genres();
-        private DbBookstore _db = DbBookstore.GetContext();
-        public AddGenresWindow()
+        private genres _currentGenre = new genres();
+        private DbbookstoreEntities _db = DbbookstoreEntities.GetContext();
+        public AddgenresWindow()
         {
             InitializeComponent();
             DataContext = _currentGenre;
@@ -41,14 +41,14 @@ namespace BookStore.View
                 return;
             }
 
-            if(_db.Genres.Any(g => g.name_genre == _currentGenre.name_genre && g.is_deleted == false))
+            if(_db.genres.Any(g => g.name_genre == _currentGenre.name_genre && g.is_deleted == false))
             {
                 MessageBox.Show("Такой жанр уже существует");
                 return;
             }
 
             if (_currentGenre.id == 0)
-                _db.Genres.Add(_currentGenre);
+                _db.genres.Add(_currentGenre);
             
             try
             {
