@@ -85,7 +85,7 @@
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                  Margin="20,10,20,10" Text="{Binding name_book}" Grid.Row="0" Grid.ColumnSpan="2"/>
 
-                        <ComboBox x:Name ="authorComboBox" materialDesign:HintAssist.Hint="Автор"
+                        <ComboBox x:Name ="AuthorComboBox" materialDesign:HintAssist.Hint="Автор"
                                   Style="{StaticResource MaterialDesignComboBox}"
                                   Margin="20,0,20,0" SelectedItem="{Binding author}"  Grid.Row="1" Height="25"  >
                             <ComboBox.ItemTemplate>
@@ -99,7 +99,7 @@
                             </ComboBox.ItemTemplate>
                         </ComboBox>
 
-                        <Button Content="Добавить автора" Margin="0,11,20,12" Grid.Row="1" Grid.Column="1" Click="AddauthorBtn_Click" />
+                        <Button Content="Добавить автора" Margin="0,11,20,12" Grid.Row="1" Grid.Column="1" Click="AddAuthorBtn_Click" />
 
                         <ComboBox x:Name ="PublishingComboBox" materialDesign:HintAssist.Hint="Издательство"
                                   Style="{StaticResource MaterialDesignComboBox}"
@@ -117,7 +117,7 @@
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                  Margin="20,10,20,9" Text="{Binding number_pages}" Grid.Row="4" Grid.ColumnSpan="2"/>
 
-                        <ComboBox x:Name ="genresComboBox" materialDesign:HintAssist.Hint="Жанр"
+                        <ComboBox x:Name ="GenresComboBox" materialDesign:HintAssist.Hint="Жанр"
                                   Style="{StaticResource MaterialDesignComboBox}"
                                   Margin="20,0,20,0"
                                   DisplayMemberPath="name_genre" SelectedItem="{Binding genres}"  Grid.Row="5" Height="25">

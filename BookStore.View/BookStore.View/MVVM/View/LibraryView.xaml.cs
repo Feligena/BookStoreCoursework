@@ -26,44 +26,39 @@ namespace bookstore.View.MVVM.View
         public LibraryView()
         {
             InitializeComponent();
-            LibraryDataGrid.ItemsSource = _db.books.Where(b => b.is_deleted == false)
-                                                   .Join(_db.author,
-                                                         b => b.id_author, au => au.id, (b, au) => new
-                                                         {
-                                                             b.id,
-                                                             b.name_book,
-                                                             au.id_human,
-                                                             id_author = au.id,
-                                                             nameauthor = au.human.last_name + " " + au.human.first_name + " " + au.human.patronymic,
-                                                             pubHouse = b.publishing_house.name_pub_house,
-                                                             b.year_publishing,
-                                                             genre = b.genres.name_genre,
-                                                             b.number_pages,
-                                                             b.cost_price,
-                                                             b.selling_price,
-                                                             b.amount
-                                                         }).ToList();
+
+            UbdateDGLibrary();
+        }
+
+        private void UbdateDGLibrary()
+        {
+            LibraryDataGrid.ItemsSource = _db.books.Where(b => b.is_deleted == false).ToList();
         }
 
         private void EditBookBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var addBook = new AddBook((sender as Button).DataContext as books);
+            addBook.ShowDialog();
+            UbdateDGLibrary();
         }
 
         private void WriteOffBtn_Click(object sender, RoutedEventArgs e)
         {
 
+            UbdateDGLibrary();
         }
 
         private void DeleteBookBtn_Click(object sender, RoutedEventArgs e)
         {
 
+            UbdateDGLibrary();
         }
 
         private void BtnAddBook_CLick(object sender, RoutedEventArgs e)
         {
-            var addBook = new AddBook();
+            var addBook = new AddBook(null);
             addBook.ShowDialog();
+            UbdateDGLibrary();
         }
 
         private void SearchBookBtn_CLick(object sender, RoutedEventArgs e)
