@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 App.config
+/BookStore.View/BookStore.View/App.config
