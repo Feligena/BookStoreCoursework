@@ -26,12 +26,18 @@ namespace bookstore.View
     {
         private employees _currentEmployee = new employees() { human = new human(), job_titles = new job_titles()};
         private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
-        public AddEmployeeWindow() //employees selectedemployees
+        public AddEmployeeWindow(employees selectedEmployee)
         {
-            //if(selectedemployees != null)
-            //    _currentEmployee = selectedemployees;
-
             InitializeComponent();
+
+            if (selectedEmployee != null)
+            {
+                _currentEmployee = selectedEmployee;
+                var tmp = _db.authorization.First(a => a.id_employee == _currentEmployee.id);
+                textBoxLogin.Text = tmp.login;
+                textBoxPassword.Password = tmp.password;
+            }
+
             DataContext = _currentEmployee;
             JobTitleComboBox.ItemsSource = _db.job_titles.ToList();
         }
@@ -57,7 +63,7 @@ namespace bookstore.View
 
             if (errors.Length > 0)
             {
-                MessageBox.Show(errors.ToString(), "Ошибка!");
+                MessageBox.Show(errors.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -77,11 +83,11 @@ namespace bookstore.View
 
                         if (empl)
                         {
-                            MessageBox.Show("Такой сотрудник уже существует");
+                            MessageBox.Show("Такой сотрудник уже существует", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                             return;
                         }
 
-                        MessageBox.Show("Такой логин уже занят");
+                        MessageBox.Show("Такой логин уже занят", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                         return;
                     }
                 }
@@ -92,16 +98,22 @@ namespace bookstore.View
                     _db.employees.Add(_currentEmployee);
                 }
             }
+            else
+            {
+                var tmp = _db.authorization.First(a => a.id_employee == _currentEmployee.id);
+                tmp.login = textBoxLogin.Text.Trim();
+                tmp.password = textBoxPassword.Password.Trim();
+            }
 
             try
             {
                 _db.SaveChanges();
-                MessageBox.Show("Добавлен новый сотрудник");
+                MessageBox.Show("Информация о сотруднике сохранена", "Успешно!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show(ex.Message.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 this.Close();
             }
 

@@ -26,67 +26,59 @@ namespace bookstore.View.MVVM.View
         public EmployeeView()
         {
             InitializeComponent();
-            //EmployeeDataGrid.ItemsSource = Dbbookstore.GetContext().employees.Where(em => em.is_deleted == false).ToList();
-            //EmployeeDataGrid.ItemsSource = _db.employees.ToList();
+            UpdateEmployeeDG();
+        }
+
+        private void UpdateEmployeeDG()
+        {
+            EmployeeDataGrid.ItemsSource = _db.employees.Where(em => em.is_deleted == false).ToList();
         }
 
         private void ButtonAddEmployee_Click(object sender, RoutedEventArgs e)
         {
-            var addEmployeeWindow = new AddEmployeeWindow();
+            var addEmployeeWindow = new AddEmployeeWindow(null);
             addEmployeeWindow.ShowDialog();
-        }
-
-        private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if (Visibility == Visibility.Visible)
-            {
-                _db.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                //EmployeeDataGrid.ItemsSource = _db.employees.Where(em => em.is_deleted == false).ToList();
-                //EmployeeDataGrid.ItemsSource = _db.authorization.Where(em => em.is_deleted == false).ToList();
-                EmployeeDataGrid.ItemsSource = _db.employees.Where(em => em.is_deleted == false)
-                                                            .Join(_db.authorization, p => p.id, a => a.id_employee,
-                                                                 (p, a) => new
-                                                                 {
-                                                                     a.id,
-                                                                     fname = p.human.first_name,
-                                                                     lname = p.human.last_name,
-                                                                     p.human.patronymic,
-                                                                     title = p.job_titles.name_title,
-                                                                     a.login
-                                                                 })
-                                                            .ToList();
-            }
+            UpdateEmployeeDG();
         }
 
         private void EditEmployeeBtn_Click(object sender, RoutedEventArgs e)
         {
-            //var addEmployeeWindow = new AddEmployeeWindow((sender as Button).DataContext as employees);
-            //addEmployeeWindow.ShowDialog();
+            var addEmployeeWindow = new AddEmployeeWindow((sender as Button).DataContext as employees);
+            addEmployeeWindow.ShowDialog();
+            UpdateEmployeeDG();
         }
 
         private void DeleteEmployeeBtn_Click(object sender, RoutedEventArgs e)
         {
+            if(MessageBox.Show("Вы действительно хотите удалить сотрудника?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                var tmpEmployee = (sender as Button).DataContext as employees;
+                tmpEmployee.is_deleted = true;
+                tmpEmployee.human.is_deleted = true;
 
+                var tmpAuthorization = _db.authorization.First(a => a.id_employee == tmpEmployee.id);
+                tmpAuthorization.is_deleted = true;
+
+                try
+                {
+                    _db.SaveChanges();
+                    MessageBox.Show("Сотрудник удален", "Успешно!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+
+            UpdateEmployeeDG();
         }
 
         private void SearchEmployeeBtn_CLick(object sender, RoutedEventArgs e)
         {
-            //SearchEmployeeText
             EmployeeDataGrid.ItemsSource = _db.employees.Where(em => em.is_deleted == false 
                                                                      && (em.human.first_name.Contains(SearchEmployeeText.Text)
                                                                      || em.human.last_name.Contains(SearchEmployeeText.Text)
-                                                                     || em.human.patronymic.Contains(SearchEmployeeText.Text)))
-                                                        .Join(_db.authorization, p => p.id, a => a.id_employee,
-                                                             (p, a) => new
-                                                             {
-                                                                 a.id,
-                                                                 fname = p.human.first_name,
-                                                                 lname = p.human.last_name,
-                                                                 p.human.patronymic,
-                                                                 title = p.job_titles.name_title,
-                                                                 a.login
-                                                             })
-                                                        .ToList();
+                                                                     || em.human.patronymic.Contains(SearchEmployeeText.Text))).ToList();
         }
     }
 }

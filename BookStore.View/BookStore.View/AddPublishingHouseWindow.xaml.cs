@@ -40,7 +40,7 @@ namespace bookstore.View
 
             if(errors.Length > 0)
             {
-                MessageBox.Show(errors.ToString(), "Ошибка!");
+                MessageBox.Show(errors.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -48,7 +48,7 @@ namespace bookstore.View
             {
                 if (_db.publishing_house.Any(p => p.name_pub_house == _currentPubHouse.name_pub_house && p.is_deleted == false))
                 {
-                    MessageBox.Show("Такое издательство уже существует");
+                    MessageBox.Show("Такое издательство уже существует", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
                 else _db.publishing_house.Add(_currentPubHouse);
@@ -58,7 +58,7 @@ namespace bookstore.View
             try
             {
                 _db.SaveChanges();
-                MessageBox.Show("Добавлено новое издательство");
+                MessageBox.Show("Добавлено новое издательство", "Успешно!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                     this.Close();
             }
             catch(Exception ex)

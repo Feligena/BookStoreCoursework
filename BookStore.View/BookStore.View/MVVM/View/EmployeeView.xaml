@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:bookstore.View.MVVM.View"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
-             IsVisibleChanged="UserControl_IsVisibleChanged">
+             d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
         <StackPanel Orientation="Horizontal" >
             <Border Width="500" 
@@ -43,12 +42,11 @@
                   x:Name="EmployeeDataGrid"
                   AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Имя" Binding="{Binding fname}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Фамилия" Binding="{Binding lname}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Отчество" Binding="{Binding patronymic}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Должность" Binding="{Binding title}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn x:Name="DGEmployeeLogin" Header="Логин" Binding="{Binding login}" Width="*"></DataGridTextColumn>
-                
+                <DataGridTextColumn Header="Имя" Binding="{Binding human.first_name}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding human.last_name}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding human.patronymic}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Должность" Binding="{Binding job_titles.name_title}" Width="*"></DataGridTextColumn>
+ 
                 <DataGridTemplateColumn Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

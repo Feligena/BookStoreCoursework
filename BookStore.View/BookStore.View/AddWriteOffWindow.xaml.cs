@@ -42,7 +42,7 @@ namespace BookStore.View
         {
             StringBuilder errors = new StringBuilder();
 
-            if (EmployeeComboBox.Text == null)
+            if (_currentWriteOff.employees.id == 0)
                 errors.AppendLine("Укажите сотрудника, который проводит списание");
 
             if(_currentWriteOff.amount == 0)
@@ -50,19 +50,23 @@ namespace BookStore.View
 
             if (errors.Length > 0)
             {
-                MessageBox.Show(errors.ToString(), "Ошибка!");
+                MessageBox.Show(errors.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
             if(_currentWriteOff.amount > _currentWriteOff.books.amount)
             {
-                MessageBox.Show("Списываемых книг не может быть больше, чем имеющихся в наличае", "Ошибка!");
+                MessageBox.Show("Списываемых книг не может быть больше, чем имеющихся в наличае", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
             if (_currentWriteOff.id == 0)
             {
                 _currentWriteOff.books.amount -= _currentWriteOff.amount;
+
+                if(_currentWriteOff.books.amount == 0)
+                    _currentWriteOff.books.is_deleted = true;
+
                 _currentWriteOff.date_write_offs = DateTime.Now;
                 _db.write_offs.Add(_currentWriteOff);
             }
@@ -70,7 +74,7 @@ namespace BookStore.View
             try
             {
                 _db.SaveChanges();
-                MessageBox.Show("Информация о списании сохранена", "Успешно!");
+                MessageBox.Show("Информация о списании сохранена", "Успешно!",MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 this.Close();
             }
             catch (Exception ex)
