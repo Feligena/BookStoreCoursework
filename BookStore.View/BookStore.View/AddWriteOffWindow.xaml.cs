@@ -16,13 +16,13 @@ using System.Windows.Shapes;
 namespace BookStore.View
 {
     /// <summary>
-    /// Логика взаимодействия для WriteOffWindow.xaml
+    /// Логика взаимодействия для AddWriteOffWindow.xaml
     /// </summary>
-    public partial class WriteOffWindow : Window
+    public partial class AddWriteOffWindow : Window
     {
-        private write_offs _currentWriteOff = new write_offs() { books = new books()};
+        private write_offs _currentWriteOff = new write_offs() { books = new books(), employees = new employees() }; // { books = new books(), employees = new employees()}
         private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
-        public WriteOffWindow(books selectedBook)
+        public AddWriteOffWindow(books selectedBook)
         {
             InitializeComponent();
 
@@ -79,8 +79,6 @@ namespace BookStore.View
                 this.Close();
             }
         }
-
-
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {

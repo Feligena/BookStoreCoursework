@@ -44,14 +44,16 @@ namespace bookstore.View
                 return;
             }
 
-            if (_db.publishing_house.Any(p => p.name_pub_house == _currentPubHouse.name_pub_house && p.is_deleted == false))
-            {
-                MessageBox.Show("Такое издательство уже существует");
-                return;
-            }
-
             if (_currentPubHouse.id == 0)
-                _db.publishing_house.Add(_currentPubHouse);
+            {
+                if (_db.publishing_house.Any(p => p.name_pub_house == _currentPubHouse.name_pub_house && p.is_deleted == false))
+                {
+                    MessageBox.Show("Такое издательство уже существует");
+                    return;
+                }
+                else _db.publishing_house.Add(_currentPubHouse);
+            }
+                
 
             try
             {

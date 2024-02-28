@@ -134,8 +134,8 @@
     <Compile Include="users.cs">
       <DependentUpon>DbBookstoreModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="WriteOffWindow.xaml.cs">
-      <DependentUpon>WriteOffWindow.xaml</DependentUpon>
+    <Compile Include="AddWriteOffWindow.xaml.cs">
+      <DependentUpon>AddWriteOffWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="write_offs.cs">
       <DependentUpon>DbBookstoreModel.tt</DependentUpon>
@@ -232,7 +232,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WriteOffWindow.xaml">
+    <Page Include="AddWriteOffWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -66,22 +66,24 @@ namespace bookstore.View
                 return;
             }
 
-            if(_db.books.Any(b => b.name_book == _currentBook.name_book 
+            if (_currentBook.id == 0)
+            {
+                if (_db.books.Any(b => b.name_book == _currentBook.name_book
                                 && b.author.human.last_name == _currentBook.author.human.last_name
                                 && b.author.human.first_name == _currentBook.author.human.first_name
                                 && b.author.human.patronymic == _currentBook.author.human.patronymic
-                                && b.publishing_house.name_pub_house == _currentBook.publishing_house.name_pub_house 
+                                && b.publishing_house.name_pub_house == _currentBook.publishing_house.name_pub_house
                                 && b.year_publishing == _currentBook.year_publishing
-                                && b.number_pages == _currentBook.number_pages 
+                                && b.number_pages == _currentBook.number_pages
                                 && b.genres.name_genre == _currentBook.genres.name_genre
                                 && b.is_deleted == false))
-            {
-                MessageBox.Show("Такая книга уже существует");
-                return;
+                {
+                    MessageBox.Show("Такая книга уже существует");
+                    return;
+                }
+                else
+                    _db.books.Add(_currentBook);
             }
-
-            if (_currentBook.id == 0)
-                _db.books.Add(_currentBook);
 
             try
             {

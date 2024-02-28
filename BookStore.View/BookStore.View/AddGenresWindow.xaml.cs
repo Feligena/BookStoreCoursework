@@ -41,15 +41,16 @@ namespace bookstore.View
                 return;
             }
 
-            if(_db.genres.Any(g => g.name_genre == _currentGenre.name_genre && g.is_deleted == false))
+            if (_currentGenre.id == 0)
             {
-                MessageBox.Show("Такой жанр уже существует");
-                return;
+                if (_db.genres.Any(g => g.name_genre == _currentGenre.name_genre && g.is_deleted == false))
+                {
+                    MessageBox.Show("Такой жанр уже существует");
+                    return;
+                }
+                else _db.genres.Add(_currentGenre);
             }
 
-            if (_currentGenre.id == 0)
-                _db.genres.Add(_currentGenre);
-            
             try
             {
                 _db.SaveChanges();

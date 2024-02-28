@@ -61,35 +61,38 @@ namespace bookstore.View
                 return;
             }
 
-            if(_db.authorization.Any( a => a.login == textBoxLogin.Text))
+            if (_currentEmployee.id == 0)
             {
-                var tmp = _db.authorization.First(a => a.login == textBoxLogin.Text && a.is_deleted == false);
-
-                if (tmp != null)
+                if (_db.authorization.Any(a => a.login == textBoxLogin.Text))
                 {
-                    var empl = _db.employees.Any(a => a.human.last_name == _currentEmployee.human.last_name
-                                    && a.human.first_name == _currentEmployee.human.first_name
-                                    && a.human.patronymic == _currentEmployee.human.patronymic
-                                    && tmp.id_employee == a.id
-                                    && a.is_deleted == false);
+                    var tmp = _db.authorization.First(a => a.login == textBoxLogin.Text && a.is_deleted == false);
 
-                    if(empl)
+                    if (tmp != null)
                     {
-                        MessageBox.Show("Такой сотрудник уже существует");
+                        var empl = _db.employees.Any(a => a.human.last_name == _currentEmployee.human.last_name
+                                        && a.human.first_name == _currentEmployee.human.first_name
+                                        && a.human.patronymic == _currentEmployee.human.patronymic
+                                        && tmp.id_employee == a.id
+                                        && a.is_deleted == false);
+
+                        if (empl)
+                        {
+                            MessageBox.Show("Такой сотрудник уже существует");
+                            return;
+                        }
+
+                        MessageBox.Show("Такой логин уже занят");
                         return;
                     }
-
-                    MessageBox.Show("Такой логин уже занят");
-                    return;
+                }
+                else
+                {
+                    var authorization = new authorization() { login = textBoxLogin.Text.Trim(), password = textBoxPassword.Password.Trim() };
+                    _currentEmployee.authorization.Add(authorization);
+                    _db.employees.Add(_currentEmployee);
                 }
             }
 
-            if (_currentEmployee.id == 0)
-            {
-                var authorization = new authorization() { login = textBoxLogin.Text.Trim(), password = textBoxPassword.Password.Trim() };
-                _currentEmployee.authorization.Add(authorization);
-                _db.employees.Add(_currentEmployee);
-            }
             try
             {
                 _db.SaveChanges();

@@ -1,4 +1,4 @@
-﻿<Window x:Class="BookStore.View.WriteOffWindow"
+﻿<Window x:Class="BookStore.View.AddWriteOffWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -88,7 +88,7 @@
 
                     <ComboBox x:Name ="EmployeeComboBox" materialDesign:HintAssist.Hint="Сотрудник"
                                   Style="{StaticResource MaterialDesignComboBox}"
-                                  Margin="20,10,20,0" SelectedItem="{Binding employee}" >
+                                  Margin="20,10,20,0" SelectedItem="{Binding employees}" >
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock>

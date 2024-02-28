@@ -33,7 +33,7 @@ namespace bookstore.View.MVVM.View
 
         private void WriteOffBtn_Click(object sender, RoutedEventArgs e)
         {
-            var addWriteOff = new WriteOffWindow((sender as Button).DataContext as books);
+            var addWriteOff = new AddWriteOffWindow((sender as Button).DataContext as books);
             addWriteOff.ShowDialog();
             UbdateDGLibrary();
         }
