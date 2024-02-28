@@ -13,18 +13,18 @@ namespace bookstore.View
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DbbookstoreEntities : DbContext
+    public partial class DbBookstoreEntities : DbContext
     {
-        private static DbbookstoreEntities _context;
-        public DbbookstoreEntities()
-            : base("name=DbbookstoreEntities")
+        private static DbBookstoreEntities _context;
+        public DbBookstoreEntities()
+            : base("name=DbBookstoreEntities")
         {
         }
 
-        public static DbbookstoreEntities GetContext()
+        public static DbBookstoreEntities GetContext()
         {
             if(_context == null)
-                _context = new DbbookstoreEntities();
+                _context = new DbBookstoreEntities();
 
             return _context;
         }

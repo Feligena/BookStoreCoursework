@@ -21,7 +21,7 @@ namespace bookstore.View
     public partial class AddauthorWindow : Window
     {
         private author _currentauthor = new author() { human = new human() };
-        private DbbookstoreEntities _db = DbbookstoreEntities.GetContext();
+        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
         public AddauthorWindow()
         {
             InitializeComponent();
@@ -44,17 +44,18 @@ namespace bookstore.View
                 return;
             }
 
-            if (_db.author.Any(a => a.human.last_name == _currentauthor.human.last_name 
-                                    && a.human.first_name == _currentauthor.human.first_name 
-                                    && a.human.patronymic == _currentauthor.human.patronymic 
-                                    && a.is_deleted == false))
-            {
-                MessageBox.Show("Такой автор уже существует");
-                return;
-            }
-
             if (_currentauthor.id == 0)
-                _db.author.Add(_currentauthor);
+            {
+                if (_db.author.Any(a => a.human.last_name == _currentauthor.human.last_name
+                                    && a.human.first_name == _currentauthor.human.first_name
+                                    && a.human.patronymic == _currentauthor.human.patronymic
+                                    && a.is_deleted == false))
+                {
+                    MessageBox.Show("Такой автор уже существует");
+                    return;
+                }
+                else _db.author.Add(_currentauthor);
+            }
                 
             try
             {

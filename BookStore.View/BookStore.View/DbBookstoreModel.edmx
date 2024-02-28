@@ -778,7 +778,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DbbookstoreEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DbBookstoreEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="author" EntityType="Self.author" />
           <EntitySet Name="authorization" EntityType="Self.authorization" />
           <EntitySet Name="book_reservation" EntityType="Self.book_reservation" />
@@ -863,7 +863,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище DbbookstoreContainer" CdmEntityContainer="DbbookstoreEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DbbookstoreContainer" CdmEntityContainer="DbBookstoreEntities">
           <EntitySetMapping Name="author">
             <EntityTypeMapping TypeName="Dbbookstore.author">
               <MappingFragment StoreEntitySet="author">

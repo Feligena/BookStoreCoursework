@@ -22,7 +22,7 @@ namespace bookstore.View.MVVM.View
     /// </summary>
     public partial class EmployeeView : UserControl
     {
-        private DbbookstoreEntities _db = DbbookstoreEntities.GetContext();
+        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
         public EmployeeView()
         {
             InitializeComponent();

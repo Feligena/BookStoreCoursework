@@ -21,7 +21,7 @@ namespace bookstore.View
     public partial class AddUserWindow : Window
     {
         private users _currentUser = new users() { human = new human()};
-        private DbbookstoreEntities _db = DbbookstoreEntities.GetContext();
+        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
         public AddUserWindow()
         {
             InitializeComponent();
@@ -47,18 +47,19 @@ namespace bookstore.View
                 return;
             }
 
-            if (_db.users.Any(a => a.human.last_name == _currentUser.human.last_name
+            if (_currentUser.id == 0)
+            {
+                if (_db.users.Any(a => a.human.last_name == _currentUser.human.last_name
                                     && a.human.first_name == _currentUser.human.first_name
                                     && a.human.patronymic == _currentUser.human.patronymic
                                     && a.phone == _currentUser.phone
                                     && a.is_deleted == false))
-            {
-                MessageBox.Show("Такой покупатель уже существует");
-                return;
+                {
+                    MessageBox.Show("Такой покупатель уже существует");
+                    return;
+                }
+                else _db.users.Add(_currentUser);
             }
-
-            if (_currentUser.id == 0)
-                _db.users.Add(_currentUser);
 
             try
             {
