@@ -62,7 +62,7 @@ namespace bookstore.View
 
             if (errors.Length > 0)
             {
-                MessageBox.Show(errors.ToString(), "Ошибка!");
+                MessageBox.Show(errors.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -78,7 +78,7 @@ namespace bookstore.View
                                 && b.genres.name_genre == _currentBook.genres.name_genre
                                 && b.is_deleted == false))
                 {
-                    MessageBox.Show("Такая книга уже существует");
+                    MessageBox.Show("Такая книга уже существует", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
                 else
@@ -88,7 +88,7 @@ namespace bookstore.View
             try
             {
                 _db.SaveChanges();
-                MessageBox.Show("Информация сохранена", "Успешно!");
+                MessageBox.Show("Информация сохранена", "Успешно!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 this.Close();
             }
             catch (Exception ex)

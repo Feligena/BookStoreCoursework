@@ -40,7 +40,7 @@ namespace bookstore.View
 
             if(errors.Length > 0)
             {
-                MessageBox.Show(errors.ToString());
+                MessageBox.Show(errors.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -51,7 +51,7 @@ namespace bookstore.View
                                     && a.human.patronymic == _currentauthor.human.patronymic
                                     && a.is_deleted == false))
                 {
-                    MessageBox.Show("Такой автор уже существует");
+                    MessageBox.Show("Такой автор уже существует", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
                 else _db.author.Add(_currentauthor);
@@ -60,7 +60,7 @@ namespace bookstore.View
             try
             {
                 _db.SaveChanges();
-                MessageBox.Show("Добавлен новый автор");
+                MessageBox.Show("Добавлен новый автор", "Успешно!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 this.Close();
             }
             catch (Exception ex)

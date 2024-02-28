@@ -49,7 +49,7 @@ namespace bookstore.View.MVVM.View
                 try
                 {
                     _db.SaveChanges();
-                    MessageBox.Show("Книга удалена", "Успешно!");
+                    MessageBox.Show("Книга удалена", "Успешно!", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception ex)
                 {

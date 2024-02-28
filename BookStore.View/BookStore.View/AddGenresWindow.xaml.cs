@@ -37,7 +37,7 @@ namespace bookstore.View
 
             if (errors.Length > 0)
             {
-                MessageBox.Show(errors.ToString(), "Ошибка!");
+                MessageBox.Show(errors.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -45,7 +45,7 @@ namespace bookstore.View
             {
                 if (_db.genres.Any(g => g.name_genre == _currentGenre.name_genre && g.is_deleted == false))
                 {
-                    MessageBox.Show("Такой жанр уже существует");
+                    MessageBox.Show("Такой жанр уже существует", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
                 else _db.genres.Add(_currentGenre);
@@ -54,7 +54,7 @@ namespace bookstore.View
             try
             {
                 _db.SaveChanges();
-                MessageBox.Show("Добавлен новый жанр");
+                MessageBox.Show("Добавлен новый жанр", "Успешно!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 this.Close();
             }
             catch (Exception ex)

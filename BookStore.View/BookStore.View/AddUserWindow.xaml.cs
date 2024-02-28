@@ -22,9 +22,13 @@ namespace bookstore.View
     {
         private users _currentUser = new users() { human = new human()};
         private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
-        public AddUserWindow()
+        public AddUserWindow(users sendlerUser)
         {
             InitializeComponent();
+
+            if(sendlerUser != null)
+                _currentUser = sendlerUser;
+
             DataContext = _currentUser;
         }
 
@@ -43,7 +47,7 @@ namespace bookstore.View
 
             if (errors.Length > 0)
             {
-                MessageBox.Show(errors.ToString());
+                MessageBox.Show(errors.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -55,7 +59,7 @@ namespace bookstore.View
                                     && a.phone == _currentUser.phone
                                     && a.is_deleted == false))
                 {
-                    MessageBox.Show("Такой покупатель уже существует");
+                    MessageBox.Show("Такой покупатель уже существует", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
                 else _db.users.Add(_currentUser);
@@ -64,7 +68,7 @@ namespace bookstore.View
             try
             {
                 _db.SaveChanges();
-                MessageBox.Show("Добавлен новый покупатель");
+                MessageBox.Show("Информация о покупателе сохранена", "Успешно!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 this.Close();
             }
             catch (Exception ex)

@@ -57,7 +57,7 @@ namespace bookstore.View
 
             if (errors.Length > 0)
             {
-                MessageBox.Show(errors.ToString(), "Ошибка!");
+                MessageBox.Show(errors.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -77,11 +77,11 @@ namespace bookstore.View
 
                         if (empl)
                         {
-                            MessageBox.Show("Такой сотрудник уже существует");
+                            MessageBox.Show("Такой сотрудник уже существует", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                             return;
                         }
 
-                        MessageBox.Show("Такой логин уже занят");
+                        MessageBox.Show("Такой логин уже занят", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                         return;
                     }
                 }
@@ -96,7 +96,7 @@ namespace bookstore.View
             try
             {
                 _db.SaveChanges();
-                MessageBox.Show("Добавлен новый сотрудник");
+                MessageBox.Show("Добавлен новый сотрудник", "Успешно!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 this.Close();
             }
             catch (Exception ex)
