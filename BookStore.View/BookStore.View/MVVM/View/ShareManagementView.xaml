@@ -31,13 +31,46 @@
             </Border>
             <Border>
                 <Button HorizontalAlignment="Center" 
-                        Content="Добавить акцию" Style="{StaticResource MaterialDesignFlatMidBgButton}"/>
+                        Content="Добавить акцию" Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                        Click="AddPromotionBtn_Click"/>
             </Border>
         </StackPanel>
         <DataGrid Margin="20 30"
-                  Background="#B4ADCC" Height="350">
+                  Background="#B4ADCC" 
+                  Height="350"
+                  x:Name="PromoDataGrid"
+                  AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding name_promotion}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Скидка,%" Binding="{Binding discount_percentage}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата начала" Binding="{Binding start_of_stock}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата окончания" Binding="{Binding end_of_stock}" Width="*"></DataGridTextColumn>
 
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Список книг" Name="BooksListBtn" Click="GetBooksListBtn_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать" Name="EditPromoBtn" Click="EditPromoBtn_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Background="#852323" Content="Удалить" Name="DeletePromoBtn" Click="DeletePromoBtn_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+            </DataGrid.Columns>
         </DataGrid>
     </StackPanel>
 </UserControl>

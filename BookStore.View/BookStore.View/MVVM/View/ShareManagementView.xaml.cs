@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookStore.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,44 @@ namespace bookstore.View.MVVM.View
     /// </summary>
     public partial class ShareManagementView : UserControl
     {
+        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
         public ShareManagementView()
         {
             InitializeComponent();
+
+            UpdatePromotionsDG();
         }
+
+        private void UpdatePromotionsDG()
+        {
+            PromoDataGrid.ItemsSource = _db.promotions.Where(p => p.is_deleted == false).ToList();
+        }
+
+        private void AddPromotionBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var addPromoWindow = new AddPromotionWindow(null);
+            addPromoWindow.ShowDialog();
+            UpdatePromotionsDG();
+        }
+
+        private void GetBooksListBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var getBooksOnPromoWindow = new GetPromoOnBooksWindow((sender as Button).DataContext as promotions);
+            getBooksOnPromoWindow.ShowDialog();
+        }
+
+        private void EditPromoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var addPromoWindow = new AddPromotionWindow((sender as Button).DataContext as promotions);
+            addPromoWindow.ShowDialog();
+            UpdatePromotionsDG();
+        }
+
+        private void DeletePromoBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
     }
 }

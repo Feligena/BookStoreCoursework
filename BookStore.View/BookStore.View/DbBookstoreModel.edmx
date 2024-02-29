@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Dbbookstore" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище Dbbookstore" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="author">
           <Key>
             <PropertyRef Name="id" />
@@ -100,6 +100,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name_promotion" Type="text" Nullable="false" />
           <Property Name="discount_percentage" Type="int" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="start_of_stock" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="end_of_stock" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="is_deleted" Type="bit" Nullable="false" />
@@ -413,8 +414,7 @@
             <End Role="write_offs" EntitySet="write_offs" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Dbbookstore" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -541,6 +541,7 @@
           <Property Name="end_of_stock" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="is_deleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="promotion_on_books" Relationship="Self.promotion_on_books_ibfk_2" FromRole="promotions" ToRole="promotion_on_books" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="publishing_house">
           <Key>
@@ -964,6 +965,7 @@
           <EntitySetMapping Name="promotions">
             <EntityTypeMapping TypeName="Dbbookstore.promotions">
               <MappingFragment StoreEntitySet="promotions">
+                <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name_promotion" ColumnName="name_promotion" />
                 <ScalarProperty Name="discount_percentage" ColumnName="discount_percentage" />

@@ -20,7 +20,7 @@ namespace BookStore.View
     /// </summary>
     public partial class AddWriteOffWindow : Window
     {
-        private write_offs _currentWriteOff = new write_offs() { books = new books(), employees = new employees() }; // { books = new books(), employees = new employees()}
+        private write_offs _currentWriteOff = new write_offs() { books = new books(), employees = new employees() };
         private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
         public AddWriteOffWindow(books selectedBook)
         {

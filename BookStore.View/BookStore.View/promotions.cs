@@ -23,6 +23,7 @@ namespace bookstore.View
         public int id { get; set; }
         public string name_promotion { get; set; }
         public int discount_percentage { get; set; }
+        public string description { get; set; }
         public System.DateTime start_of_stock { get; set; }
         public System.DateTime end_of_stock { get; set; }
         public bool is_deleted { get; set; }

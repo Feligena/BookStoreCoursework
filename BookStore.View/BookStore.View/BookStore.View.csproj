@@ -87,6 +87,9 @@
     <Compile Include="AddGenresWindow.xaml.cs">
       <DependentUpon>AddGenresWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddPromotionWindow.xaml.cs">
+      <DependentUpon>AddPromotionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddPublishingHouseWindow.xaml.cs">
       <DependentUpon>AddPublishingHouseWindow.xaml</DependentUpon>
     </Compile>
@@ -112,6 +115,9 @@
     </Compile>
     <Compile Include="genres.cs">
       <DependentUpon>DbBookstoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetPromoOnBooksWindow.xaml.cs">
+      <DependentUpon>GetPromoOnBooksWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="human.cs">
       <DependentUpon>DbBookstoreModel.tt</DependentUpon>
@@ -156,6 +162,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddPromotionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddPublishingHouseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -165,6 +175,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GetPromoOnBooksWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
