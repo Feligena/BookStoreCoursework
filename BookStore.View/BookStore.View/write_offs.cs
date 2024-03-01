@@ -17,7 +17,7 @@ namespace bookstore.View
         public int id { get; set; }
         public int id_book { get; set; }
         public int amount { get; set; }
-        public System.DateTime date_write_offs { get; set; }
+        public System.DateTime date_write_offs {  get; set; }
         public int id_employee { get; set; }
     
         public virtual books books { get; set; }

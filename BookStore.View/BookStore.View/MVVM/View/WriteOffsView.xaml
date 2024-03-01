@@ -63,7 +63,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Дата списания" Binding="{Binding date_write_offs}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата списания" Binding="{Binding date_write_offs, StringFormat='dd.MM.yyy HH.mm'}" Width="auto"></DataGridTextColumn>
             
             </DataGrid.Columns>
         </DataGrid>

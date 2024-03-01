@@ -65,8 +65,8 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" Binding="{Binding name_promotion}" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Header="Скидка,%" Binding="{Binding discount_percentage}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата начала" Binding="{Binding start_of_stock}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата окончания" Binding="{Binding end_of_stock}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата начала" Binding="{Binding start_of_stock, StringFormat='dd.MM.yyy'}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата окончания" Binding="{Binding end_of_stock, StringFormat='dd.MM.yyy'}" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Header="Описание" Binding="{Binding description}" Width="150"></DataGridTextColumn>
 
                 <DataGridTemplateColumn Width="auto">
