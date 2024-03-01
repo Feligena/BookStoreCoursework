@@ -13,16 +13,21 @@
         <Border Background="#a399d6" CornerRadius="40">
             <Grid>
                 <Border MinWidth="50" Margin="15" Background="#B4ADCC" VerticalAlignment="Center" 
-                Padding="10" MaxWidth="340" CornerRadius="30">
+                        Padding="10" MaxWidth="340" CornerRadius="30">
                     <Border.Effect>
                         <DropShadowEffect BlurRadius="10" Color="#64527A"/>
                     </Border.Effect>
                     <StackPanel>
                         <TextBlock Text="Авторизация" FontSize="20" FontStyle="Oblique" FontWeight="Bold" 
-                       HorizontalAlignment="Center"/>
-                        <TextBox x:Name ="textBoxLogin" materialDesign:HintAssist.Hint="Логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                        <PasswordBox x:Name="passwordBox" materialDesign:HintAssist.Hint="Пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
-                        <Button Content="Войти" Margin="0 20" Click="Button_Admittance_Click"/>
+                                   HorizontalAlignment="Center"/>
+                        
+                        <TextBox x:Name ="textBoxLoginEntry" materialDesign:HintAssist.Hint="Логин" 
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                        
+                        <PasswordBox x:Name="passwordBoxEntry" materialDesign:HintAssist.Hint="Пароль" 
+                                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+
+                        <Button Content="Войти" Margin="0 20" Click="EntranceBtn_Click"/>
                     </StackPanel>
                 </Border>
             </Grid>

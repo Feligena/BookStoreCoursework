@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookStore.View.MVVM.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,21 +21,39 @@ namespace bookstore.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        private DbBookStoreEntities _db = DbBookStoreEntities.GetContext();
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Admittance_Click(object sender, RoutedEventArgs e)
+        private void EntranceBtn_Click(object sender, RoutedEventArgs e)
         {
-            // string login = textBoxLogin.Text.Trim();
-            // string password = passwordBox.Password.Trim();
+            //textBoxLoginEntry
+            //passwordBoxEntry
 
-            //TODO
+            var authorizationCheck = _db.authorizations.FirstOrDefault(a => a.login == textBoxLoginEntry.Text && a.is_deleted == false);
 
-            var adminWindow = new AdminWindow();
-            adminWindow.Show();
-            this.Close();
+            if (authorizationCheck != null)
+            {
+                if(authorizationCheck.password == passwordBoxEntry.Password)
+                {
+                    var adminWindow = new AdminWindow();
+                    adminWindow.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Неверный пароль", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Пользователя с таким логином нет", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
         }
     }
 }
