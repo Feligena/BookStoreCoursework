@@ -30,7 +30,7 @@ namespace BookStore.View
             if(selectedPromo != null)
             {
                 PromoOnBooksDataGrid.ItemsSource = _db.promotion_on_books.Include(p => p.book)
-                                                                         .Where(p => p.id_promotion == selectedPromo.id && p.book.is_deleted == false)
+                                                                         .Where(p => p.id_promotion == selectedPromo.id)
                                                                          .ToList();
             }
             

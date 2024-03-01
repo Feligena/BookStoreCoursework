@@ -1,0 +1,99 @@
+﻿<Window x:Class="BookStore.View.GetPromoOnBooksWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookStore.View"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        WindowStyle="None" Background="Transparent" Height="450" Width="800" 
+        ResizeMode="NoResize" AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen">
+
+    <Border Background="#a399d6" CornerRadius="30" MouseDown="Border_MouseDown" Margin="20,20,20,20">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="18" Color="#64527A"/>
+        </Border.Effect>
+
+        <Grid >
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="15" Color="#64527A"/>
+            </Grid.Effect>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button Width="20" 
+                    Height="20" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Right" 
+                    Margin="12 12" 
+                    Grid.Column="1"
+                    materialDesign:HintAssist.Hint="X" Style="{StaticResource MaterialDesignFloatingActionButton}"
+                    Content="X"
+                    Foreground="White"
+                    Click="ButtonExit_Click"/>
+
+            <Button Width="20" 
+                    Height="20" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Right" 
+                    Margin="40 12" 
+                    Grid.Column="1"
+                    materialDesign:HintAssist.Hint="_" Style="{StaticResource MaterialDesignFloatingActionButton}"
+                    Content="_"
+                    Foreground="White"
+                    Click="ButtonMinimize_Click"/>
+
+            <Border Grid.Row="1"
+                    Margin=" 30,0,30,45"
+                    Background="#B4ADCC" CornerRadius="30">
+
+                <StackPanel>
+                    <TextBlock Margin="10 10 10 0"
+                               Text="Книги, участвующие в акции"
+                               FontSize="16"
+                               FontStyle="Italic"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"/>
+                    
+                    <DataGrid Margin="0 5"
+                              Background="#B4ADCC" 
+                              Height="270" Width="670"
+                              x:Name="PromoOnBooksDataGrid"
+                              AutoGenerateColumns="False" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Наименование" Binding="{Binding book.name_book}" Width="auto"></DataGridTextColumn>
+
+                            <DataGridTemplateColumn Header="Автор" Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <Run Text="{Binding book.author.human.last_name}"/>
+                                            <Run Text="{Binding book.author.human.first_name}"/>
+                                            <Run Text="{Binding book.author.human.patronymic}"/>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTextColumn Header="Жанр" Binding="{Binding book.genre.name_genre}" Width="auto"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Издательство" Binding="{Binding book.publishing_house.name_pub_house}" Width="auto"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Год публикации" Binding="{Binding book.year_publishing}" Width="auto"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Кол-во страниц" Binding="{Binding book.number_pages}" Width="auto"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Цена, руб" Binding="{Binding book.selling_price}" Width="auto"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Себестоимость" Binding="{Binding book.cost_price}" Width="auto"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Кол-во, шт" Binding="{Binding books.amount}" Width="auto"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </StackPanel>
+
+                
+                
+            </Border>
+        </Grid>
+    </Border>
+</Window>
