@@ -71,10 +71,10 @@ namespace bookstore.View.MVVM.View
         {
             LibraryDataGrid.ItemsSource = _db.books.Where(b => b.is_deleted == false
                                                             && (b.name_book.Contains(SearchBookText.Text)
-                                                                || b.author.human.first_name.Contains(SearchBookText.Text)
-                                                                || b.author.human.last_name.Contains(SearchBookText.Text)
-                                                                || b.genres.name_genre.Contains(SearchBookText.Text)
-                                                                || b.publishing_house.name_pub_house.Contains(SearchBookText.Text))).ToList();
+                                                            || b.author.human.first_name.Contains(SearchBookText.Text)
+                                                            || b.author.human.last_name.Contains(SearchBookText.Text)
+                                                            || b.genres.name_genre.Contains(SearchBookText.Text)
+                                                            || b.publishing_house.name_pub_house.Contains(SearchBookText.Text))).ToList();
         }
     }
 }

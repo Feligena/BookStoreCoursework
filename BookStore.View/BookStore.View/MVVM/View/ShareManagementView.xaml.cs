@@ -77,6 +77,14 @@ namespace bookstore.View.MVVM.View
             }
         }
 
-
+        private void SearchPromoBtn_CLick(object sender, RoutedEventArgs e)
+        {
+            PromoDataGrid.ItemsSource = _db.promotions.Where(p => p.is_deleted == false
+                                                            && (p.name_promotion.Contains(SearchPromoText.Text)
+                                                            || p.description.Contains(SearchPromoText.Text)
+                                                            || p.discount_percentage.ToString().Contains(SearchPromoText.Text)
+                                                            || p.start_of_stock.ToString().Contains(SearchPromoText.Text)
+                                                            || p.end_of_stock.ToString().Contains(SearchPromoText.Text))).ToList();
+        }
     }
 }
