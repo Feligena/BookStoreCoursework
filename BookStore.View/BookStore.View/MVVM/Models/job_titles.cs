@@ -7,19 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace bookstore.View
+namespace BookStore.View.MVVM.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class selling
+    public partial class job_titles
     {
-        public int id { get; set; }
-        public int id_book { get; set; }
-        public int id_employee { get; set; }
-        public System.DateTime date_write_offs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public job_titles()
+        {
+            this.employees = new HashSet<employee>();
+        }
     
-        public virtual books books { get; set; }
-        public virtual employees employees { get; set; }
+        public int id { get; set; }
+        public string name_title { get; set; }
+        public bool access_rights { get; set; }
+        public bool is_deleted { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<employee> employees { get; set; }
     }
 }

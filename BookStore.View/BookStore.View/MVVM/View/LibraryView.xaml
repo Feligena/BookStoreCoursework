@@ -56,10 +56,10 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTextColumn Header="Жанр" Binding="{Binding genres.name_genre}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Жанр" Binding="{Binding genre.name_genre}" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Header="Цена, руб" Binding="{Binding selling_price}" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Header="Издательство" Binding="{Binding publishing_house.name_pub_house}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата публикации" Binding="{Binding year_publishing}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Год публикации" Binding="{Binding year_publishing}" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Header="Кол-во страниц" Binding="{Binding number_pages}" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Header="Себестоимость" Binding="{Binding cost_price}" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Header="Кол-во, шт" Binding="{Binding amount}" Width="auto"></DataGridTextColumn>

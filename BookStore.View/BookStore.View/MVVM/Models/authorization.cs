@@ -7,18 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace bookstore.View
+namespace BookStore.View.MVVM.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class promotion_on_books
+    public partial class authorization
     {
         public int id { get; set; }
-        public int id_book { get; set; }
-        public int id_promotion { get; set; }
+        public int id_employee { get; set; }
+        public string login { get; set; }
+        public string password { get; set; }
+        public bool is_deleted { get; set; }
     
-        public virtual books books { get; set; }
-        public virtual promotions promotions { get; set; }
+        public virtual employee employee { get; set; }
     }
 }

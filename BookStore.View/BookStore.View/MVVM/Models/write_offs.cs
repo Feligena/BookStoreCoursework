@@ -7,25 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace bookstore.View
+namespace BookStore.View.MVVM.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class author
+    public partial class write_offs
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public author()
-        {
-            this.books = new HashSet<books>();
-        }
-    
         public int id { get; set; }
-        public int id_human { get; set; }
-        public bool is_deleted { get; set; }
+        public int id_book { get; set; }
+        public int amount { get; set; }
+        public System.DateTime date_write_offs { get; set; }
+        public int id_employee { get; set; }
     
-        public virtual human human { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<books> books { get; set; }
+        public virtual book book { get; set; }
+        public virtual employee employee { get; set; }
     }
 }

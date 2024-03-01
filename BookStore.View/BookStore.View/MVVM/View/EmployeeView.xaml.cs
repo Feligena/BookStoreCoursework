@@ -1,5 +1,6 @@
 ﻿using bookstore.View;
 using bookstore.View;
+using BookStore.View.MVVM.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace bookstore.View.MVVM.View
     /// </summary>
     public partial class EmployeeView : UserControl
     {
-        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
+        private DbBookStoreEntities _db = DbBookStoreEntities.GetContext();
         public EmployeeView()
         {
             InitializeComponent();
@@ -43,7 +44,7 @@ namespace bookstore.View.MVVM.View
 
         private void EditEmployeeBtn_Click(object sender, RoutedEventArgs e)
         {
-            var addEmployeeWindow = new AddEmployeeWindow((sender as Button).DataContext as employees);
+            var addEmployeeWindow = new AddEmployeeWindow((sender as Button).DataContext as employee);
             addEmployeeWindow.ShowDialog();
             UpdateEmployeeDG();
         }
@@ -52,11 +53,11 @@ namespace bookstore.View.MVVM.View
         {
             if(MessageBox.Show("Вы действительно хотите удалить сотрудника?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                var tmpEmployee = (sender as Button).DataContext as employees;
+                var tmpEmployee = (sender as Button).DataContext as employee;
                 tmpEmployee.is_deleted = true;
                 tmpEmployee.human.is_deleted = true;
 
-                var tmpAuthorization = _db.authorization.First(a => a.id_employee == tmpEmployee.id);
+                var tmpAuthorization = _db.authorizations.First(a => a.id_employee == tmpEmployee.id);
                 tmpAuthorization.is_deleted = true;
 
                 try
@@ -66,7 +67,7 @@ namespace bookstore.View.MVVM.View
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show(ex.Message.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 

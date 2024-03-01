@@ -60,34 +60,34 @@
 
                     <TextBox x:Name ="textBoxNameBook" materialDesign:HintAssist.Hint="Название" 
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Margin="20,0,20,0" Text="{Binding book.name_book}" IsReadOnly="True" TextWrapping="Wrap"/>
+                             Margin="20,0,20,0" Text="{Binding books.name_book}" IsReadOnly="True" TextWrapping="Wrap"/>
 
                     <TextBox x:Name ="textBoxAuthor" materialDesign:HintAssist.Hint="Автор" 
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Margin="20,0,20,0" Text="{Binding book.author.human.last_name}" IsReadOnly="True"/>
+                             Margin="20,0,20,0" Text="{Binding books.author.human.last_name}" IsReadOnly="True"/>
 
  <!--   TODO: Решить вопрос с выводом полного имени автора в одну строку-->
 
 
                     <TextBox x:Name ="textBoxPubHouse" materialDesign:HintAssist.Hint="Издательство" 
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Margin="20,0,20,0" Text="{Binding book.publishing_house.name_pub_house}" IsReadOnly="True"/>
+                             Margin="20,0,20,0" Text="{Binding books.publishing_house.name_pub_house}" IsReadOnly="True"/>
 
                     <TextBox x:Name ="textBoxYear" materialDesign:HintAssist.Hint="Год" 
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Margin="20,0,20,0" Text="{Binding book.year_publishing}" IsReadOnly="True"/>
+                             Margin="20,0,20,0" Text="{Binding books.year_publishing}" IsReadOnly="True"/>
 
                     <TextBox x:Name="textBoxPages" materialDesign:HintAssist.Hint="Кол-во страниц"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Margin="20,0,20,0" Text="{Binding book.number_pages}" IsReadOnly="True"/>
+                             Margin="20,0,20,0" Text="{Binding books.number_pages}" IsReadOnly="True"/>
 
                     <TextBox x:Name="genreTextBox" materialDesign:HintAssist.Hint="Кол-во страниц"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Margin="20,0,20,0" Text="{Binding book.genre.name_genre}" IsReadOnly="True"/>
+                             Margin="20,0,20,0" Text="{Binding books.genres.name_genre}" IsReadOnly="True"/>
 
                     <ComboBox x:Name ="EmployeeComboBox" materialDesign:HintAssist.Hint="Сотрудник"
                                   Style="{StaticResource MaterialDesignComboBox}"
-                                  Margin="20,10,20,0" SelectedItem="{Binding employee}" >
+                                  Margin="20,10,20,0" SelectedItem="{Binding employees}" >
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock>

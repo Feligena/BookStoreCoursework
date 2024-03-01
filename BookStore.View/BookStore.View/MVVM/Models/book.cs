@@ -7,19 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace bookstore.View
+namespace BookStore.View.MVVM.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class books
+    public partial class book
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public books()
+        public book()
         {
             this.book_reservation = new HashSet<book_reservation>();
             this.promotion_on_books = new HashSet<promotion_on_books>();
-            this.selling = new HashSet<selling>();
+            this.sellings = new HashSet<selling>();
             this.write_offs = new HashSet<write_offs>();
         }
     
@@ -39,11 +39,11 @@ namespace bookstore.View
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<book_reservation> book_reservation { get; set; }
         public virtual publishing_house publishing_house { get; set; }
-        public virtual genres genres { get; set; }
+        public virtual genre genre { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<promotion_on_books> promotion_on_books { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<selling> selling { get; set; }
+        public virtual ICollection<selling> sellings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<write_offs> write_offs { get; set; }
     }

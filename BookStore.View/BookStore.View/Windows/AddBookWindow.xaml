@@ -119,7 +119,7 @@
                         <ComboBox x:Name ="GenresComboBox" materialDesign:HintAssist.Hint="Жанр"
                                   Style="{StaticResource MaterialDesignComboBox}"
                                   Margin="20,0,20,0"
-                                  DisplayMemberPath="name_genre" SelectedItem="{Binding genre}"  Grid.Row="5" Height="25">
+                                  DisplayMemberPath="name_genre" SelectedItem="{Binding genres}"  Grid.Row="5" Height="25">
                         </ComboBox>
 
                         <Button Content="Добавить жанр" Margin="0,13,20,10" Grid.Row="5" Grid.Column="1" Click="AddGenreBtn_Click" />

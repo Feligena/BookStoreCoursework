@@ -7,25 +7,32 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace bookstore.View
+namespace BookStore.View.MVVM.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class job_titles
+    public partial class human
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public job_titles()
+        public human()
         {
-            this.employees = new HashSet<employees>();
+            this.authors = new HashSet<author>();
+            this.employees = new HashSet<employee>();
+            this.users = new HashSet<user>();
         }
     
         public int id { get; set; }
-        public string name_title { get; set; }
-        public bool access_rights { get; set; }
+        public string first_name { get; set; }
+        public string last_name { get; set; }
+        public string patronymic { get; set; }
         public bool is_deleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<employees> employees { get; set; }
+        public virtual ICollection<author> authors { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<employee> employees { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<user> users { get; set; }
     }
 }

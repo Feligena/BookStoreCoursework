@@ -7,19 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace bookstore.View
+namespace BookStore.View.MVVM.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class authorization
+    public partial class genre
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public genre()
+        {
+            this.books = new HashSet<book>();
+        }
+    
         public int id { get; set; }
-        public int id_employee { get; set; }
-        public string login { get; set; }
-        public string password { get; set; }
+        public string name_genre { get; set; }
         public bool is_deleted { get; set; }
     
-        public virtual employees employees { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<book> books { get; set; }
     }
 }
