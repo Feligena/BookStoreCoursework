@@ -7,32 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace bookstore.View
+namespace BookStore.View.MVVM.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class human
+    public partial class user
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public human()
+        public user()
         {
-            this.author = new HashSet<author>();
-            this.employees = new HashSet<employees>();
-            this.users = new HashSet<users>();
+            this.book_reservation = new HashSet<book_reservation>();
         }
     
         public int id { get; set; }
-        public string first_name { get; set; }
-        public string last_name { get; set; }
-        public string patronymic { get; set; }
+        public int id_human { get; set; }
+        public string phone { get; set; }
         public bool is_deleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<author> author { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<employees> employees { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<users> users { get; set; }
+        public virtual ICollection<book_reservation> book_reservation { get; set; }
+        public virtual human human { get; set; }
     }
 }

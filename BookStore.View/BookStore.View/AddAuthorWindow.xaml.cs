@@ -1,4 +1,5 @@
 ﻿using bookstore.View;
+using BookStore.View.MVVM.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace bookstore.View
     public partial class AddauthorWindow : Window
     {
         private author _currentauthor = new author() { human = new human() };
-        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
+        private DbBookStoreEntities _db = DbBookStoreEntities.GetContext();
         public AddauthorWindow()
         {
             InitializeComponent();
@@ -48,7 +49,7 @@ namespace bookstore.View
 
             if (_currentauthor.id == 0)
             {
-                if (_db.author.Any(a => a.human.last_name == _currentauthor.human.last_name
+                if (_db.authors.Any(a => a.human.last_name == _currentauthor.human.last_name
                                     && a.human.first_name == _currentauthor.human.first_name
                                     && a.human.patronymic == _currentauthor.human.patronymic
                                     && a.is_deleted == false))
@@ -56,7 +57,7 @@ namespace bookstore.View
                     MessageBox.Show("Такой автор уже существует", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-                else _db.author.Add(_currentauthor);
+                else _db.authors.Add(_currentauthor);
             }
                 
             try

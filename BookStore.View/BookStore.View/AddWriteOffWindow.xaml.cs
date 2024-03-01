@@ -1,4 +1,5 @@
 ﻿using bookstore.View;
+using BookStore.View.MVVM.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,15 +21,15 @@ namespace BookStore.View
     /// </summary>
     public partial class AddWriteOffWindow : Window
     {
-        private write_offs _currentWriteOff = new write_offs() { books = new books(), employees = new employees() };
-        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
-        public AddWriteOffWindow(books selectedBook)
+        private write_offs _currentWriteOff = new write_offs() { book = new book(), employee = new employee() };
+        private DbBookStoreEntities _db = DbBookStoreEntities.GetContext();
+        public AddWriteOffWindow(book selectedBook)
         {
             InitializeComponent();
 
             if (selectedBook != null)
             {
-                _currentWriteOff.books = selectedBook;
+                _currentWriteOff.book = selectedBook;
                 _currentWriteOff.amount = selectedBook.amount;
                 _currentWriteOff.id = 0;
                 AddEditWriteOff.Text = "Списание книги";
@@ -43,7 +44,7 @@ namespace BookStore.View
         {
             StringBuilder errors = new StringBuilder();
 
-            if (_currentWriteOff.employees.id == 0)
+            if (_currentWriteOff.employee.id == 0)
                 errors.AppendLine("Укажите сотрудника, который проводит списание");
 
             if(_currentWriteOff.amount == 0)
@@ -55,7 +56,7 @@ namespace BookStore.View
                 return;
             }
 
-            if(_currentWriteOff.amount > _currentWriteOff.books.amount)
+            if(_currentWriteOff.amount > _currentWriteOff.book.amount)
             {
                 MessageBox.Show("Списываемых книг не может быть больше, чем имеющихся в наличае", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
@@ -63,10 +64,10 @@ namespace BookStore.View
 
             if (_currentWriteOff.id == 0)
             {
-                _currentWriteOff.books.amount -= _currentWriteOff.amount;
+                _currentWriteOff.book.amount -= _currentWriteOff.amount;
 
-                if(_currentWriteOff.books.amount == 0)
-                    _currentWriteOff.books.is_deleted = true;
+                if(_currentWriteOff.book.amount == 0)
+                    _currentWriteOff.book.is_deleted = true;
 
                 _currentWriteOff.date_write_offs = DateTime.Now;
                 _db.write_offs.Add(_currentWriteOff);

@@ -1,4 +1,5 @@
 ﻿using bookstore.View;
+using BookStore.View.MVVM.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace bookstore.View
     public partial class AddPublishingHouseWindow : Window
     {
         private publishing_house _currentPubHouse = new publishing_house();
-        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
+        private DbBookStoreEntities _db = DbBookStoreEntities.GetContext();
         public AddPublishingHouseWindow()
         {
             InitializeComponent();

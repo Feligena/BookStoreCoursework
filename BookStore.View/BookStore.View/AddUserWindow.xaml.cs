@@ -1,4 +1,5 @@
 ﻿using bookstore.View;
+using BookStore.View.MVVM.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,9 @@ namespace bookstore.View
     /// </summary>
     public partial class AddUserWindow : Window
     {
-        private users _currentUser = new users() { human = new human()};
-        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
-        public AddUserWindow(users sendlerUser)
+        private user _currentUser = new user() { human = new human()};
+        private DbBookStoreEntities _db = DbBookStoreEntities.GetContext();
+        public AddUserWindow(user sendlerUser)
         {
             InitializeComponent();
 

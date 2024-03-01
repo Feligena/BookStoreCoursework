@@ -1,4 +1,5 @@
 ﻿using BookStore.View;
+using BookStore.View.MVVM.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace bookstore.View.MVVM.View
     /// </summary>
     public partial class ShareManagementView : UserControl
     {
-        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
+        private DbBookStoreEntities _db = DbBookStoreEntities.GetContext();
         public ShareManagementView()
         {
             InitializeComponent();
@@ -43,13 +44,13 @@ namespace bookstore.View.MVVM.View
 
         private void GetBooksListBtn_Click(object sender, RoutedEventArgs e)
         {
-            var getBooksOnPromoWindow = new GetPromoOnBooksWindow((sender as Button).DataContext as promotions);
+            var getBooksOnPromoWindow = new GetPromoOnBooksWindow((sender as Button).DataContext as promotion);
             getBooksOnPromoWindow.ShowDialog();
         }
 
         private void EditPromoBtn_Click(object sender, RoutedEventArgs e)
         {
-            var addPromoWindow = new AddPromotionWindow((sender as Button).DataContext as promotions);
+            var addPromoWindow = new AddPromotionWindow((sender as Button).DataContext as promotion);
             addPromoWindow.ShowDialog();
             UpdatePromotionsDG();
         }
@@ -58,7 +59,7 @@ namespace bookstore.View.MVVM.View
         {
             if (MessageBox.Show("Вы действительно хотите удалить акцию?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                var tmpPromo = (sender as Button).DataContext as promotions;
+                var tmpPromo = (sender as Button).DataContext as promotion;
                 tmpPromo.is_deleted = true;
 
                 var tmpPromoOnBooks = _db.promotion_on_books.Where(p => p.id_promotion == tmpPromo.id).ToList();

@@ -7,20 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace bookstore.View
+namespace BookStore.View.MVVM.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class book_reservation
+    public partial class write_offs
     {
         public int id { get; set; }
         public int id_book { get; set; }
-        public int id_user { get; set; }
         public int amount { get; set; }
-        public bool is_redeem { get; set; }
+        public System.DateTime date_write_offs { get; set; }
+        public int id_employee { get; set; }
     
-        public virtual books books { get; set; }
-        public virtual users users { get; set; }
+        public virtual book book { get; set; }
+        public virtual employee employee { get; set; }
     }
 }

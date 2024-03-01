@@ -1,4 +1,5 @@
 ﻿using bookstore.View;
+using BookStore.View.MVVM.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -21,14 +22,14 @@ namespace BookStore.View
     /// </summary>
     public partial class GetPromoOnBooksWindow : Window
     {
-        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
-        public GetPromoOnBooksWindow(promotions selectedPromo)
+        private DbBookStoreEntities _db = DbBookStoreEntities.GetContext();
+        public GetPromoOnBooksWindow(promotion selectedPromo)
         {
             InitializeComponent();
 
             if(selectedPromo != null)
             {
-                PromoOnBooksDataGrid.ItemsSource = _db.promotion_on_books.Include(p => p.books)
+                PromoOnBooksDataGrid.ItemsSource = _db.promotion_on_books.Include(p => p.book)
                                                                          .Where(p => p.id_promotion == selectedPromo.id)
                                                                          .ToList();
             }

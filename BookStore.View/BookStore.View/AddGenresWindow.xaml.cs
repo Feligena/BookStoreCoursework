@@ -1,4 +1,5 @@
 ﻿using bookstore.View;
+using BookStore.View.MVVM.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,8 +21,8 @@ namespace bookstore.View
     /// </summary>
     public partial class AddgenresWindow : Window
     {
-        private genres _currentGenre = new genres();
-        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
+        private genre _currentGenre = new genre();
+        private DbBookStoreEntities _db = DbBookStoreEntities.GetContext();
         public AddgenresWindow()
         {
             InitializeComponent();

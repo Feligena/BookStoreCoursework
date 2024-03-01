@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace bookstore.View
+namespace BookStore.View.MVVM.Models
 {
     using System;
     using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace bookstore.View
         public int id_book { get; set; }
         public int id_promotion { get; set; }
     
-        public virtual books books { get; set; }
-        public virtual promotions promotions { get; set; }
+        public virtual book book { get; set; }
+        public virtual promotion promotion { get; set; }
     }
 }

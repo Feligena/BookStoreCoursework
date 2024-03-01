@@ -1,4 +1,5 @@
 ﻿using bookstore.View;
+using BookStore.View.MVVM.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -22,9 +23,9 @@ namespace BookStore.View
     public partial class AddPromotionWindow : Window
     {
 
-        private promotions _currentPromo = new promotions() { start_of_stock = DateTime.Now, end_of_stock = DateTime.Now };
-        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
-        public AddPromotionWindow(promotions selectedPromo)
+        private promotion _currentPromo = new promotion() { start_of_stock = DateTime.Now, end_of_stock = DateTime.Now };
+        private DbBookStoreEntities _db = DbBookStoreEntities.GetContext();
+        public AddPromotionWindow(promotion selectedPromo)
         {
             InitializeComponent();
 
@@ -71,9 +72,9 @@ namespace BookStore.View
                 return;
             }
 
-            var listBooks = BooksListBox.SelectedItems.Cast<books>().ToList();
+            var listBooks = BooksListBox.SelectedItems.Cast<book>().ToList();
             int itdexPromo = _currentPromo.id;
-            var tmpArr = new List<books>();
+            var tmpArr = new List<book>();
 
             if (_currentPromo.id == 0)
             {
@@ -105,7 +106,7 @@ namespace BookStore.View
                 var tmp = _db.promotion_on_books.Where(p => p.id_promotion == _currentPromo.id).ToList();
 
                 foreach (var promo in tmp)
-                    tmpArr.Add(promo.books);
+                    tmpArr.Add(promo.book);
             }
 
             foreach (var book in listBooks)

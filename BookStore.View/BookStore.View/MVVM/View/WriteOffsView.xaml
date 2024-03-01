@@ -37,15 +37,15 @@
                   x:Name="WriteOffsDataGrid"
                   AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Наименование" Binding="{Binding books.name_book}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding book.name_book}" Width="auto"></DataGridTextColumn>
                 
                 <DataGridTemplateColumn Header="Автор" Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock>
-                                <Run Text="{Binding books.author.human.last_name}"/>
-                                <Run Text="{Binding books.author.human.first_name}"/>
-                                <Run Text="{Binding books.author.human.patronymic}"/>
+                                <Run Text="{Binding book.author.human.last_name}"/>
+                                <Run Text="{Binding book.author.human.first_name}"/>
+                                <Run Text="{Binding book.author.human.patronymic}"/>
                             </TextBlock>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -56,9 +56,9 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock>
-                                <Run Text="{Binding employees.human.last_name}"/>
-                                <Run Text="{Binding employees.human.first_name}"/>
-                                <Run Text="{Binding employees.human.patronymic}"/>
+                                <Run Text="{Binding employee.human.last_name}"/>
+                                <Run Text="{Binding employee.human.first_name}"/>
+                                <Run Text="{Binding employee.human.patronymic}"/>
                             </TextBlock>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

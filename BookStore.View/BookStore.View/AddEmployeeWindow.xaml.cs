@@ -16,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BookStore.View.MVVM.Models;
 
 namespace bookstore.View
 {
@@ -24,16 +25,16 @@ namespace bookstore.View
     /// </summary>
     public partial class AddEmployeeWindow : Window
     {
-        private employees _currentEmployee = new employees() { human = new human(), job_titles = new job_titles()};
-        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
-        public AddEmployeeWindow(employees selectedEmployee)
+        private employee _currentEmployee = new employee() { human = new human(), job_titles = new job_titles()};
+        private DbBookStoreEntities _db = DbBookStoreEntities.GetContext();
+        public AddEmployeeWindow(employee selectedEmployee)
         {
             InitializeComponent();
 
             if (selectedEmployee != null)
             {
                 _currentEmployee = selectedEmployee;
-                var tmp = _db.authorization.First(a => a.id_employee == _currentEmployee.id);
+                var tmp = _db.authorizations.First(a => a.id_employee == _currentEmployee.id);
                 textBoxLogin.Text = tmp.login;
                 textBoxPassword.Password = tmp.password;
                 AddEditEmployee.Text = "Редактировать данные";
@@ -71,9 +72,9 @@ namespace bookstore.View
 
             if (_currentEmployee.id == 0)
             {
-                if (_db.authorization.Any(a => a.login == textBoxLogin.Text))
+                if (_db.authorizations.Any(a => a.login == textBoxLogin.Text))
                 {
-                    var tmp = _db.authorization.First(a => a.login == textBoxLogin.Text && a.is_deleted == false);
+                    var tmp = _db.authorizations.First(a => a.login == textBoxLogin.Text && a.is_deleted == false);
 
                     if (tmp != null)
                     {
@@ -96,13 +97,13 @@ namespace bookstore.View
                 else
                 {
                     var authorization = new authorization() { login = textBoxLogin.Text.Trim(), password = textBoxPassword.Password.Trim() };
-                    _currentEmployee.authorization.Add(authorization);
+                    _currentEmployee.authorizations.Add(authorization);
                     _db.employees.Add(_currentEmployee);
                 }
             }
             else
             {
-                var tmp = _db.authorization.First(a => a.id_employee == _currentEmployee.id);
+                var tmp = _db.authorizations.First(a => a.id_employee == _currentEmployee.id);
                 tmp.login = textBoxLogin.Text.Trim();
                 tmp.password = textBoxPassword.Password.Trim();
             }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище Dbbookstore" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище DbBookStoreModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="author">
           <Key>
             <PropertyRef Name="id" />
@@ -98,7 +98,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name_promotion" Type="text" Nullable="false" />
+          <Property Name="name_promotion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="discount_percentage" Type="int" Nullable="false" />
           <Property Name="description" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="start_of_stock" Type="datetime2" Precision="7" Nullable="false" />
@@ -334,7 +334,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище DbbookstoreContainer">
+        <EntityContainer Name="Хранилище DbBookStoreModelContainer">
           <EntitySet Name="author" EntityType="Self.author" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="authorization" EntityType="Self.authorization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="book_reservation" EntityType="Self.book_reservation" Schema="dbo" store:Type="Tables" />
@@ -414,10 +414,11 @@
             <End Role="write_offs" EntitySet="write_offs" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Dbbookstore" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DbBookStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="author">
           <Key>
             <PropertyRef Name="id" />
@@ -437,7 +438,7 @@
           <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="is_deleted" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="employees" Relationship="Self.authorization_ibfk_1" FromRole="authorization" ToRole="employees" />
+          <NavigationProperty Name="employee" Relationship="Self.authorization_ibfk_1" FromRole="authorization" ToRole="employees" />
         </EntityType>
         <EntityType Name="book_reservation">
           <Key>
@@ -448,10 +449,10 @@
           <Property Name="id_user" Type="Int32" Nullable="false" />
           <Property Name="amount" Type="Int32" Nullable="false" />
           <Property Name="is_redeem" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="books" Relationship="Self.book_reservation_ibfk_1" FromRole="book_reservation" ToRole="books" />
-          <NavigationProperty Name="users" Relationship="Self.book_reservation_ibfk_2" FromRole="book_reservation" ToRole="users" />
+          <NavigationProperty Name="book" Relationship="Self.book_reservation_ibfk_1" FromRole="book_reservation" ToRole="books" />
+          <NavigationProperty Name="user" Relationship="Self.book_reservation_ibfk_2" FromRole="book_reservation" ToRole="users" />
         </EntityType>
-        <EntityType Name="books">
+        <EntityType Name="book">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -469,12 +470,12 @@
           <NavigationProperty Name="author" Relationship="Self.books_ibfk_1" FromRole="books" ToRole="author" />
           <NavigationProperty Name="book_reservation" Relationship="Self.book_reservation_ibfk_1" FromRole="books" ToRole="book_reservation" />
           <NavigationProperty Name="publishing_house" Relationship="Self.books_ibfk_2" FromRole="books" ToRole="publishing_house" />
-          <NavigationProperty Name="genres" Relationship="Self.books_ibfk_3" FromRole="books" ToRole="genres" />
+          <NavigationProperty Name="genre" Relationship="Self.books_ibfk_3" FromRole="books" ToRole="genres" />
           <NavigationProperty Name="promotion_on_books" Relationship="Self.promotion_on_books_ibfk_1" FromRole="books" ToRole="promotion_on_books" />
-          <NavigationProperty Name="selling" Relationship="Self.selling_ibfk_1" FromRole="books" ToRole="selling" />
+          <NavigationProperty Name="sellings" Relationship="Self.selling_ibfk_1" FromRole="books" ToRole="selling" />
           <NavigationProperty Name="write_offs" Relationship="Self.write_offs_ibfk_1" FromRole="books" ToRole="write_offs" />
         </EntityType>
-        <EntityType Name="employees">
+        <EntityType Name="employee">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -482,13 +483,13 @@
           <Property Name="id_human" Type="Int32" Nullable="false" />
           <Property Name="id_job_title" Type="Int32" Nullable="false" />
           <Property Name="is_deleted" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="authorization" Relationship="Self.authorization_ibfk_1" FromRole="employees" ToRole="authorization" />
+          <NavigationProperty Name="authorizations" Relationship="Self.authorization_ibfk_1" FromRole="employees" ToRole="authorization" />
           <NavigationProperty Name="human" Relationship="Self.employees_ibfk_1" FromRole="employees" ToRole="human" />
           <NavigationProperty Name="job_titles" Relationship="Self.employees_ibfk_2" FromRole="employees" ToRole="job_titles" />
-          <NavigationProperty Name="selling" Relationship="Self.selling_ibfk_2" FromRole="employees" ToRole="selling" />
+          <NavigationProperty Name="sellings" Relationship="Self.selling_ibfk_2" FromRole="employees" ToRole="selling" />
           <NavigationProperty Name="write_offs" Relationship="Self.write_offs_ibfk_2" FromRole="employees" ToRole="write_offs" />
         </EntityType>
-        <EntityType Name="genres">
+        <EntityType Name="genre">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -506,7 +507,7 @@
           <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="patronymic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="is_deleted" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="author" Relationship="Self.author_ibfk_1" FromRole="human" ToRole="author" />
+          <NavigationProperty Name="authors" Relationship="Self.author_ibfk_1" FromRole="human" ToRole="author" />
           <NavigationProperty Name="employees" Relationship="Self.employees_ibfk_1" FromRole="human" ToRole="employees" />
           <NavigationProperty Name="users" Relationship="Self.users_ibfk_1" FromRole="human" ToRole="users" />
         </EntityType>
@@ -527,21 +528,21 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_book" Type="Int32" Nullable="false" />
           <Property Name="id_promotion" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="books" Relationship="Self.promotion_on_books_ibfk_1" FromRole="promotion_on_books" ToRole="books" />
-          <NavigationProperty Name="promotions" Relationship="Self.promotion_on_books_ibfk_2" FromRole="promotion_on_books" ToRole="promotions" />
+          <NavigationProperty Name="book" Relationship="Self.promotion_on_books_ibfk_1" FromRole="promotion_on_books" ToRole="books" />
+          <NavigationProperty Name="promotion" Relationship="Self.promotion_on_books_ibfk_2" FromRole="promotion_on_books" ToRole="promotions" />
         </EntityType>
-        <EntityType Name="promotions">
+        <EntityType Name="promotion">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name_promotion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name_promotion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="discount_percentage" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="start_of_stock" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="end_of_stock" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="is_deleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="promotion_on_books" Relationship="Self.promotion_on_books_ibfk_2" FromRole="promotions" ToRole="promotion_on_books" />
-          <Property Name="description" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="publishing_house">
           <Key>
@@ -561,10 +562,10 @@
           <Property Name="id_book" Type="Int32" Nullable="false" />
           <Property Name="id_employee" Type="Int32" Nullable="false" />
           <Property Name="date_write_offs" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="books" Relationship="Self.selling_ibfk_1" FromRole="selling" ToRole="books" />
-          <NavigationProperty Name="employees" Relationship="Self.selling_ibfk_2" FromRole="selling" ToRole="employees" />
+          <NavigationProperty Name="book" Relationship="Self.selling_ibfk_1" FromRole="selling" ToRole="books" />
+          <NavigationProperty Name="employee" Relationship="Self.selling_ibfk_2" FromRole="selling" ToRole="employees" />
         </EntityType>
-        <EntityType Name="users">
+        <EntityType Name="user">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -584,8 +585,8 @@
           <Property Name="amount" Type="Int32" Nullable="false" />
           <Property Name="date_write_offs" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="id_employee" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="books" Relationship="Self.write_offs_ibfk_1" FromRole="write_offs" ToRole="books" />
-          <NavigationProperty Name="employees" Relationship="Self.write_offs_ibfk_2" FromRole="write_offs" ToRole="employees" />
+          <NavigationProperty Name="book" Relationship="Self.write_offs_ibfk_1" FromRole="write_offs" ToRole="books" />
+          <NavigationProperty Name="employee" Relationship="Self.write_offs_ibfk_2" FromRole="write_offs" ToRole="employees" />
         </EntityType>
         <Association Name="author_ibfk_1">
           <End Role="human" Type="Self.human" Multiplicity="1" />
@@ -601,7 +602,7 @@
         </Association>
         <Association Name="books_ibfk_1">
           <End Role="author" Type="Self.author" Multiplicity="1" />
-          <End Role="books" Type="Self.books" Multiplicity="*" />
+          <End Role="books" Type="Self.book" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="author">
               <PropertyRef Name="id" />
@@ -612,7 +613,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="authorization_ibfk_1">
-          <End Role="employees" Type="Self.employees" Multiplicity="1" />
+          <End Role="employees" Type="Self.employee" Multiplicity="1" />
           <End Role="authorization" Type="Self.authorization" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="employees">
@@ -624,7 +625,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="book_reservation_ibfk_1">
-          <End Role="books" Type="Self.books" Multiplicity="1" />
+          <End Role="books" Type="Self.book" Multiplicity="1" />
           <End Role="book_reservation" Type="Self.book_reservation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="books">
@@ -636,7 +637,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="book_reservation_ibfk_2">
-          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="users" Type="Self.user" Multiplicity="1" />
           <End Role="book_reservation" Type="Self.book_reservation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="users">
@@ -649,7 +650,7 @@
         </Association>
         <Association Name="books_ibfk_2">
           <End Role="publishing_house" Type="Self.publishing_house" Multiplicity="1" />
-          <End Role="books" Type="Self.books" Multiplicity="*" />
+          <End Role="books" Type="Self.book" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="publishing_house">
               <PropertyRef Name="id" />
@@ -660,8 +661,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="books_ibfk_3">
-          <End Role="genres" Type="Self.genres" Multiplicity="1" />
-          <End Role="books" Type="Self.books" Multiplicity="*" />
+          <End Role="genres" Type="Self.genre" Multiplicity="1" />
+          <End Role="books" Type="Self.book" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="genres">
               <PropertyRef Name="id" />
@@ -672,7 +673,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="promotion_on_books_ibfk_1">
-          <End Role="books" Type="Self.books" Multiplicity="1" />
+          <End Role="books" Type="Self.book" Multiplicity="1" />
           <End Role="promotion_on_books" Type="Self.promotion_on_books" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="books">
@@ -684,7 +685,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="selling_ibfk_1">
-          <End Role="books" Type="Self.books" Multiplicity="1" />
+          <End Role="books" Type="Self.book" Multiplicity="1" />
           <End Role="selling" Type="Self.selling" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="books">
@@ -696,7 +697,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="write_offs_ibfk_1">
-          <End Role="books" Type="Self.books" Multiplicity="1" />
+          <End Role="books" Type="Self.book" Multiplicity="1" />
           <End Role="write_offs" Type="Self.write_offs" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="books">
@@ -709,7 +710,7 @@
         </Association>
         <Association Name="employees_ibfk_1">
           <End Role="human" Type="Self.human" Multiplicity="1" />
-          <End Role="employees" Type="Self.employees" Multiplicity="*" />
+          <End Role="employees" Type="Self.employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="human">
               <PropertyRef Name="id" />
@@ -721,7 +722,7 @@
         </Association>
         <Association Name="employees_ibfk_2">
           <End Role="job_titles" Type="Self.job_titles" Multiplicity="1" />
-          <End Role="employees" Type="Self.employees" Multiplicity="*" />
+          <End Role="employees" Type="Self.employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="job_titles">
               <PropertyRef Name="id" />
@@ -732,7 +733,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="selling_ibfk_2">
-          <End Role="employees" Type="Self.employees" Multiplicity="1" />
+          <End Role="employees" Type="Self.employee" Multiplicity="1" />
           <End Role="selling" Type="Self.selling" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="employees">
@@ -744,7 +745,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="write_offs_ibfk_2">
-          <End Role="employees" Type="Self.employees" Multiplicity="1" />
+          <End Role="employees" Type="Self.employee" Multiplicity="1" />
           <End Role="write_offs" Type="Self.write_offs" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="employees">
@@ -757,7 +758,7 @@
         </Association>
         <Association Name="users_ibfk_1">
           <End Role="human" Type="Self.human" Multiplicity="1" />
-          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <End Role="users" Type="Self.user" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="human">
               <PropertyRef Name="id" />
@@ -768,7 +769,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="promotion_on_books_ibfk_2">
-          <End Role="promotions" Type="Self.promotions" Multiplicity="1" />
+          <End Role="promotions" Type="Self.promotion" Multiplicity="1" />
           <End Role="promotion_on_books" Type="Self.promotion_on_books" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="promotions">
@@ -779,32 +780,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DbBookstoreEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="author" EntityType="Self.author" />
-          <EntitySet Name="authorization" EntityType="Self.authorization" />
+        <EntityContainer Name="DbBookStoreEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="authors" EntityType="Self.author" />
+          <EntitySet Name="authorizations" EntityType="Self.authorization" />
           <EntitySet Name="book_reservation" EntityType="Self.book_reservation" />
-          <EntitySet Name="books" EntityType="Self.books" />
-          <EntitySet Name="employees" EntityType="Self.employees" />
-          <EntitySet Name="genres" EntityType="Self.genres" />
-          <EntitySet Name="human" EntityType="Self.human" />
+          <EntitySet Name="books" EntityType="Self.book" />
+          <EntitySet Name="employees" EntityType="Self.employee" />
+          <EntitySet Name="genres" EntityType="Self.genre" />
+          <EntitySet Name="humen" EntityType="Self.human" />
           <EntitySet Name="job_titles" EntityType="Self.job_titles" />
           <EntitySet Name="promotion_on_books" EntityType="Self.promotion_on_books" />
-          <EntitySet Name="promotions" EntityType="Self.promotions" />
+          <EntitySet Name="promotions" EntityType="Self.promotion" />
           <EntitySet Name="publishing_house" EntityType="Self.publishing_house" />
-          <EntitySet Name="selling" EntityType="Self.selling" />
-          <EntitySet Name="users" EntityType="Self.users" />
+          <EntitySet Name="sellings" EntityType="Self.selling" />
+          <EntitySet Name="users" EntityType="Self.user" />
           <EntitySet Name="write_offs" EntityType="Self.write_offs" />
           <AssociationSet Name="author_ibfk_1" Association="Self.author_ibfk_1">
-            <End Role="human" EntitySet="human" />
-            <End Role="author" EntitySet="author" />
+            <End Role="human" EntitySet="humen" />
+            <End Role="author" EntitySet="authors" />
           </AssociationSet>
           <AssociationSet Name="books_ibfk_1" Association="Self.books_ibfk_1">
-            <End Role="author" EntitySet="author" />
+            <End Role="author" EntitySet="authors" />
             <End Role="books" EntitySet="books" />
           </AssociationSet>
           <AssociationSet Name="authorization_ibfk_1" Association="Self.authorization_ibfk_1">
             <End Role="employees" EntitySet="employees" />
-            <End Role="authorization" EntitySet="authorization" />
+            <End Role="authorization" EntitySet="authorizations" />
           </AssociationSet>
           <AssociationSet Name="book_reservation_ibfk_1" Association="Self.book_reservation_ibfk_1">
             <End Role="books" EntitySet="books" />
@@ -828,14 +829,14 @@
           </AssociationSet>
           <AssociationSet Name="selling_ibfk_1" Association="Self.selling_ibfk_1">
             <End Role="books" EntitySet="books" />
-            <End Role="selling" EntitySet="selling" />
+            <End Role="selling" EntitySet="sellings" />
           </AssociationSet>
           <AssociationSet Name="write_offs_ibfk_1" Association="Self.write_offs_ibfk_1">
             <End Role="books" EntitySet="books" />
             <End Role="write_offs" EntitySet="write_offs" />
           </AssociationSet>
           <AssociationSet Name="employees_ibfk_1" Association="Self.employees_ibfk_1">
-            <End Role="human" EntitySet="human" />
+            <End Role="human" EntitySet="humen" />
             <End Role="employees" EntitySet="employees" />
           </AssociationSet>
           <AssociationSet Name="employees_ibfk_2" Association="Self.employees_ibfk_2">
@@ -844,14 +845,14 @@
           </AssociationSet>
           <AssociationSet Name="selling_ibfk_2" Association="Self.selling_ibfk_2">
             <End Role="employees" EntitySet="employees" />
-            <End Role="selling" EntitySet="selling" />
+            <End Role="selling" EntitySet="sellings" />
           </AssociationSet>
           <AssociationSet Name="write_offs_ibfk_2" Association="Self.write_offs_ibfk_2">
             <End Role="employees" EntitySet="employees" />
             <End Role="write_offs" EntitySet="write_offs" />
           </AssociationSet>
           <AssociationSet Name="users_ibfk_1" Association="Self.users_ibfk_1">
-            <End Role="human" EntitySet="human" />
+            <End Role="human" EntitySet="humen" />
             <End Role="users" EntitySet="users" />
           </AssociationSet>
           <AssociationSet Name="promotion_on_books_ibfk_2" Association="Self.promotion_on_books_ibfk_2">
@@ -864,9 +865,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище DbbookstoreContainer" CdmEntityContainer="DbBookstoreEntities">
-          <EntitySetMapping Name="author">
-            <EntityTypeMapping TypeName="Dbbookstore.author">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DbBookStoreModelContainer" CdmEntityContainer="DbBookStoreEntities">
+          <EntitySetMapping Name="authors">
+            <EntityTypeMapping TypeName="DbBookStoreModel.author">
               <MappingFragment StoreEntitySet="author">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_human" ColumnName="id_human" />
@@ -874,8 +875,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="authorization">
-            <EntityTypeMapping TypeName="Dbbookstore.authorization">
+          <EntitySetMapping Name="authorizations">
+            <EntityTypeMapping TypeName="DbBookStoreModel.authorization">
               <MappingFragment StoreEntitySet="authorization">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_employee" ColumnName="id_employee" />
@@ -886,7 +887,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="book_reservation">
-            <EntityTypeMapping TypeName="Dbbookstore.book_reservation">
+            <EntityTypeMapping TypeName="DbBookStoreModel.book_reservation">
               <MappingFragment StoreEntitySet="book_reservation">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_book" ColumnName="id_book" />
@@ -897,7 +898,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="books">
-            <EntityTypeMapping TypeName="Dbbookstore.books">
+            <EntityTypeMapping TypeName="DbBookStoreModel.book">
               <MappingFragment StoreEntitySet="books">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name_book" ColumnName="name_book" />
@@ -914,7 +915,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="employees">
-            <EntityTypeMapping TypeName="Dbbookstore.employees">
+            <EntityTypeMapping TypeName="DbBookStoreModel.employee">
               <MappingFragment StoreEntitySet="employees">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_human" ColumnName="id_human" />
@@ -924,7 +925,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="genres">
-            <EntityTypeMapping TypeName="Dbbookstore.genres">
+            <EntityTypeMapping TypeName="DbBookStoreModel.genre">
               <MappingFragment StoreEntitySet="genres">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name_genre" ColumnName="name_genre" />
@@ -932,8 +933,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="human">
-            <EntityTypeMapping TypeName="Dbbookstore.human">
+          <EntitySetMapping Name="humen">
+            <EntityTypeMapping TypeName="DbBookStoreModel.human">
               <MappingFragment StoreEntitySet="human">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="first_name" ColumnName="first_name" />
@@ -944,7 +945,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="job_titles">
-            <EntityTypeMapping TypeName="Dbbookstore.job_titles">
+            <EntityTypeMapping TypeName="DbBookStoreModel.job_titles">
               <MappingFragment StoreEntitySet="job_titles">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name_title" ColumnName="name_title" />
@@ -954,7 +955,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="promotion_on_books">
-            <EntityTypeMapping TypeName="Dbbookstore.promotion_on_books">
+            <EntityTypeMapping TypeName="DbBookStoreModel.promotion_on_books">
               <MappingFragment StoreEntitySet="promotion_on_books">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_book" ColumnName="id_book" />
@@ -963,12 +964,12 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="promotions">
-            <EntityTypeMapping TypeName="Dbbookstore.promotions">
+            <EntityTypeMapping TypeName="DbBookStoreModel.promotion">
               <MappingFragment StoreEntitySet="promotions">
-                <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name_promotion" ColumnName="name_promotion" />
                 <ScalarProperty Name="discount_percentage" ColumnName="discount_percentage" />
+                <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="start_of_stock" ColumnName="start_of_stock" />
                 <ScalarProperty Name="end_of_stock" ColumnName="end_of_stock" />
                 <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
@@ -976,7 +977,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="publishing_house">
-            <EntityTypeMapping TypeName="Dbbookstore.publishing_house">
+            <EntityTypeMapping TypeName="DbBookStoreModel.publishing_house">
               <MappingFragment StoreEntitySet="publishing_house">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name_pub_house" ColumnName="name_pub_house" />
@@ -985,8 +986,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="selling">
-            <EntityTypeMapping TypeName="Dbbookstore.selling">
+          <EntitySetMapping Name="sellings">
+            <EntityTypeMapping TypeName="DbBookStoreModel.selling">
               <MappingFragment StoreEntitySet="selling">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_book" ColumnName="id_book" />
@@ -996,7 +997,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="users">
-            <EntityTypeMapping TypeName="Dbbookstore.users">
+            <EntityTypeMapping TypeName="DbBookStoreModel.user">
               <MappingFragment StoreEntitySet="users">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_human" ColumnName="id_human" />
@@ -1006,7 +1007,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="write_offs">
-            <EntityTypeMapping TypeName="Dbbookstore.write_offs">
+            <EntityTypeMapping TypeName="DbBookStoreModel.write_offs">
               <MappingFragment StoreEntitySet="write_offs">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_book" ColumnName="id_book" />
@@ -1030,7 +1031,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />

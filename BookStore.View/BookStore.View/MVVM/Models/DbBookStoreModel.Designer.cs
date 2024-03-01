@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Users\Елизавета\Desktop\IT\Теория Баз Данных\Проекты\Курсовая BookStore(сдаю его)\BookStore.View\BookStore.View\DbBookstoreModel.edmx" включено. 
+﻿// Создание кода T4 для модели "C:\Users\Елизавета\Desktop\IT\Теория Баз Данных\Проекты\Курсовая BookStore(сдаю его)\BookStore.View\BookStore.View\MVVM\Models\DbBookStoreModel.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.

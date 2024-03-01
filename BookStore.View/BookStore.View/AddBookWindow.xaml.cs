@@ -1,4 +1,5 @@
 ﻿using bookstore.View;
+using BookStore.View.MVVM.Models;
 using System;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,10 @@ namespace bookstore.View
     /// </summary>
     public partial class AddBook : Window
     {
-        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
-        private books _currentBook = new books();
+        private DbBookStoreEntities _db = DbBookStoreEntities.GetContext();
+        private book _currentBook = new book();
        
-        public AddBook(books selectedBook)
+        public AddBook(book selectedBook)
         {
             InitializeComponent();
 
@@ -30,7 +31,7 @@ namespace bookstore.View
 
             PublishingComboBox.ItemsSource = _db.publishing_house.Where(a => a.is_deleted == false).ToList();
             GenresComboBox.ItemsSource = _db.genres.Where(a => a.is_deleted == false).ToList();
-            AuthorComboBox.ItemsSource = _db.author.Where(a => a.is_deleted == false).ToList();
+            AuthorComboBox.ItemsSource = _db.authors.Where(a => a.is_deleted == false).ToList();
         }
 
         private void SaveBookBtn_Click(object sender, RoutedEventArgs e)
@@ -52,7 +53,7 @@ namespace bookstore.View
             if (_currentBook.number_pages == 0)
                 errors.AppendLine("Укажите количество страниц");
 
-            if (_currentBook.genres == null)
+            if (_currentBook.genre == null)
                 errors.AppendLine("Выберите жанр");
 
             if (_currentBook.cost_price == 0)
@@ -79,7 +80,7 @@ namespace bookstore.View
                                 && b.publishing_house.name_pub_house == _currentBook.publishing_house.name_pub_house
                                 && b.year_publishing == _currentBook.year_publishing
                                 && b.number_pages == _currentBook.number_pages
-                                && b.genres.name_genre == _currentBook.genres.name_genre
+                                && b.genre.name_genre == _currentBook.genre.name_genre
                                 && b.is_deleted == false))
                 {
                     MessageBox.Show("Такая книга уже существует", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -120,7 +121,7 @@ namespace bookstore.View
         {
             var addauthor = new AddauthorWindow();
             addauthor.ShowDialog();
-            AuthorComboBox.ItemsSource = _db.author.Where(a => a.is_deleted == false).ToList();
+            AuthorComboBox.ItemsSource = _db.authors.Where(a => a.is_deleted == false).ToList();
         }
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)

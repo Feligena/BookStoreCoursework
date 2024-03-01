@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using bookstore.View.MVVM.ViewModel;
 using bookstore.View;
+using BookStore.View.MVVM.Models;
 
 namespace bookstore.View.MVVM.View
 {
@@ -15,7 +16,7 @@ namespace bookstore.View.MVVM.View
     /// </summary>
     public partial class BayersView : UserControl
     {
-        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
+        private DbBookStoreEntities _db = DbBookStoreEntities.GetContext();
         public BayersView()
         {
             InitializeComponent();
@@ -36,7 +37,7 @@ namespace bookstore.View.MVVM.View
 
         private void EditUserBtn_Click(object sender, RoutedEventArgs e)
         {
-            var addUserWindow = new AddUserWindow((sender as Button).DataContext as users);
+            var addUserWindow = new AddUserWindow((sender as Button).DataContext as user);
             addUserWindow.ShowDialog();
             UpdateUsersDG();
         }
@@ -45,7 +46,7 @@ namespace bookstore.View.MVVM.View
         {
             if(MessageBox.Show("Вы действительно хотите удалить покупателя?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                var tmp = (sender as Button).DataContext as users;
+                var tmp = (sender as Button).DataContext as user;
                 tmp.is_deleted = true;
                 tmp.human.is_deleted = true;
 

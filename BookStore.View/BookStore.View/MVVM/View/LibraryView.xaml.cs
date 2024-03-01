@@ -1,4 +1,5 @@
 ﻿using BookStore.View;
+using BookStore.View.MVVM.Models;
 using System;
 using System.Linq;
 using System.Windows;
@@ -11,7 +12,7 @@ namespace bookstore.View.MVVM.View
     /// </summary>
     public partial class LibraryView : UserControl
     {
-        private DbBookstoreEntities _db = DbBookstoreEntities.GetContext();
+        private DbBookStoreEntities _db = DbBookStoreEntities.GetContext();
         public LibraryView()
         {
             InitializeComponent();
@@ -26,14 +27,14 @@ namespace bookstore.View.MVVM.View
 
         private void EditBookBtn_Click(object sender, RoutedEventArgs e)
         {
-            var addBook = new AddBook((sender as Button).DataContext as books);
+            var addBook = new AddBook((sender as Button).DataContext as book);
             addBook.ShowDialog();
             UbdateDGLibrary();
         }
 
         private void WriteOffBtn_Click(object sender, RoutedEventArgs e)
         {
-            var addWriteOff = new AddWriteOffWindow((sender as Button).DataContext as books);
+            var addWriteOff = new AddWriteOffWindow((sender as Button).DataContext as book);
             addWriteOff.ShowDialog();
             UbdateDGLibrary();
         }
@@ -42,7 +43,7 @@ namespace bookstore.View.MVVM.View
         {
             if(MessageBox.Show("Вы действительно хотите удалить эту книгу?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                var tmp = (sender as Button).DataContext as books;
+                var tmp = (sender as Button).DataContext as book;
 
                 tmp.is_deleted = true;
 
@@ -73,7 +74,7 @@ namespace bookstore.View.MVVM.View
                                                             && (b.name_book.Contains(SearchBookText.Text)
                                                             || b.author.human.first_name.Contains(SearchBookText.Text)
                                                             || b.author.human.last_name.Contains(SearchBookText.Text)
-                                                            || b.genres.name_genre.Contains(SearchBookText.Text)
+                                                            || b.genre.name_genre.Contains(SearchBookText.Text)
                                                             || b.publishing_house.name_pub_house.Contains(SearchBookText.Text))).ToList();
         }
     }
