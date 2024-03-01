@@ -23,7 +23,7 @@ namespace BookStore.View.MVVM.Models
 
         public static DbBookStoreEntities GetContext()
         {
-            if(_context == null)
+            if( _context == null )
                 _context = new DbBookStoreEntities();
 
             return _context;
