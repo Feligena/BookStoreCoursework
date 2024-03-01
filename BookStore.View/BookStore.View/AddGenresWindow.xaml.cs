@@ -25,6 +25,8 @@ namespace bookstore.View
         public AddgenresWindow()
         {
             InitializeComponent();
+
+            AddEditGenre.Text = "Добавить жанр";
             DataContext = _currentGenre;
         }
 

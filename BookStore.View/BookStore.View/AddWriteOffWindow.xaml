@@ -52,12 +52,11 @@
                 Background="#B4ADCC" CornerRadius="30">
 
                 <StackPanel >
-                    <TextBlock Margin="10 20 10 0"
-                 Text="Списание книги"
-                 FontSize="18"
-                 FontStyle="Italic"
-                 FontWeight="Bold"
-                 HorizontalAlignment="Center"/>
+                    <TextBlock Margin="10 20 10 0" x:Name="AddEditWriteOff"
+                               FontSize="18"
+                               FontStyle="Italic"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"/>
 
                     <TextBox x:Name ="textBoxNameBook" materialDesign:HintAssist.Hint="Название" 
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"

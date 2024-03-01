@@ -21,12 +21,12 @@
                           FontFamily="Centre"
                           Foreground="White"
                           HorizontalContentAlignment="Center">
+                    
                     <ComboBoxItem IsSelected="True" 
                                   Content="Все акции" 
                                   Style="{StaticResource MaterialDesignComboBoxItemStyle}"
                                   Foreground="Black"
                                   HorizontalContentAlignment="Left"/>
-
                 </ComboBox>
             </Border>
             <Border>

@@ -1,6 +1,7 @@
 ﻿using bookstore.View;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,11 @@ namespace BookStore.View
             if(selectedPromo != null)
             {
                 _currentPromo = selectedPromo;
+                _currentPromo.promotion_on_books = _db.promotion_on_books.Where(p => p.id_promotion == _currentPromo.id).ToList();
+
+                AddEditPromo.Text = "Редактировать акцию";
             }
+            else AddEditPromo.Text = "Добавить акцию";
 
             DataContext = _currentPromo;
 
@@ -57,7 +62,7 @@ namespace BookStore.View
             if (string.IsNullOrWhiteSpace(_currentPromo.end_of_stock.ToString()))
                 errors.AppendLine("Укажите дату окончания акции");
 
-            if (BooksListBox.SelectedItems.Count == 0)
+            if (_currentPromo.promotion_on_books.Count == 0 && BooksListBox.SelectedItems.Count == 0) //BooksListBox.SelectedItems.Count == 0 && 
                 errors.AppendLine("Выберите книги");
 
             if (errors.Length > 0)
@@ -66,9 +71,13 @@ namespace BookStore.View
                 return;
             }
 
-            if(_currentPromo.id == 0)
+            var listBooks = BooksListBox.SelectedItems.Cast<books>().ToList();
+            int itdexPromo = _currentPromo.id;
+            var tmpArr = new List<books>();
+
+            if (_currentPromo.id == 0)
             {
-                if(_db.promotions.Any(p => p.name_promotion == _currentPromo.name_promotion
+                if (_db.promotions.Any(p => p.name_promotion == _currentPromo.name_promotion
                                         && p.discount_percentage == _currentPromo.discount_percentage
                                         && p.start_of_stock == _currentPromo.start_of_stock
                                         && p.end_of_stock == _currentPromo.end_of_stock
@@ -77,37 +86,46 @@ namespace BookStore.View
                     MessageBox.Show("Такая акция уже существует", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-                else
-                {
-                    _db.promotions.Add(_currentPromo);
 
-                    try { _db.SaveChanges(); }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
+                _db.promotions.Add(_currentPromo);
 
-                    var itdexPromo = _db.promotions.ToList().Last().id;
-                    var listBooks = BooksListBox.SelectedItems.Cast<books>().ToList();
-
-                    foreach (var book in listBooks)
-                    {
-                        var promoOnBooks = new promotion_on_books() { id_book = book.id, id_promotion = itdexPromo };
-                        _db.promotion_on_books.Add(promoOnBooks);
-                    }
-                }
-
-                try
-                {
+                try 
+                { 
                     _db.SaveChanges();
-                    MessageBox.Show("Информация сохранена", "Успешно!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                    this.Close();
+                    itdexPromo = _db.promotions.ToList().Last().id;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
-                    this.Close();
                 }
+            }   
+
+            if (_currentPromo.promotion_on_books.Count > 0)
+            {
+                var tmp = _db.promotion_on_books.Where(p => p.id_promotion == _currentPromo.id).ToList();
+
+                foreach (var promo in tmp)
+                    tmpArr.Add(promo.books);
+            }
+
+            foreach (var book in listBooks)
+            {
+                if (tmpArr.Any(t => t.id == book.id)) break;
+
+                var promoOnBooks = new promotion_on_books() { id_book = book.id, id_promotion = itdexPromo };
+                _db.promotion_on_books.Add(promoOnBooks);
+            }
+
+            try
+            {
+                _db.SaveChanges();
+                MessageBox.Show("Информация сохранена", "Успешно!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                this.Close();
             }
         }
 

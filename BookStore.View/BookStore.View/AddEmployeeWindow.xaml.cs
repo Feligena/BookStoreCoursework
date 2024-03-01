@@ -36,7 +36,9 @@ namespace bookstore.View
                 var tmp = _db.authorization.First(a => a.id_employee == _currentEmployee.id);
                 textBoxLogin.Text = tmp.login;
                 textBoxPassword.Password = tmp.password;
+                AddEditEmployee.Text = "Редактировать данные";
             }
+            else AddEditEmployee.Text = "Добавить сотрудника";
 
             DataContext = _currentEmployee;
             JobTitleComboBox.ItemsSource = _db.job_titles.ToList();

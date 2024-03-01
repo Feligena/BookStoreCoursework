@@ -66,7 +66,7 @@ namespace bookstore.View.MVVM.View
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show(ex.Message.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 

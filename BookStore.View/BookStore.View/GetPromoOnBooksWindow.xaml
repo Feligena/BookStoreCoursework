@@ -51,35 +51,47 @@
                     Margin=" 30,0,30,45"
                     Background="#B4ADCC" CornerRadius="30">
 
-                <DataGrid Margin="0 5"
+                <StackPanel>
+                    <TextBlock Margin="10 10 10 0"
+                               Text="Книги, участвующие в акции"
+                               FontSize="16"
+                               FontStyle="Italic"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"/>
+                    
+                    <DataGrid Margin="0 5"
                               Background="#B4ADCC" 
                               Height="270" Width="670"
                               x:Name="PromoOnBooksDataGrid"
                               AutoGenerateColumns="False" IsReadOnly="True">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Наименование" Binding="{Binding books.name_book}" Width="auto"></DataGridTextColumn>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Наименование" Binding="{Binding books.name_book}" Width="auto"></DataGridTextColumn>
 
-                        <DataGridTemplateColumn Header="Автор" Width="auto">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock>
+                            <DataGridTemplateColumn Header="Автор" Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
                                             <Run Text="{Binding books.author.human.last_name}"/>
                                             <Run Text="{Binding books.author.human.first_name}"/>
                                             <Run Text="{Binding books.author.human.patronymic}"/>
-                                    </TextBlock>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
 
-                        <DataGridTextColumn Header="Жанр" Binding="{Binding books.genres.name_genre}" Width="auto"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Издательство" Binding="{Binding books.publishing_house.name_pub_house}" Width="auto"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Дата публикации" Binding="{Binding books.year_publishing}" Width="auto"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Кол-во страниц" Binding="{Binding books.number_pages}" Width="auto"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Цена, руб" Binding="{Binding books.selling_price}" Width="auto"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Себестоимость" Binding="{Binding books.cost_price}" Width="auto"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Кол-во, шт" Binding="{Binding books.amount}" Width="auto"></DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
+                            <DataGridTextColumn Header="Жанр" Binding="{Binding books.genres.name_genre}" Width="auto"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Издательство" Binding="{Binding books.publishing_house.name_pub_house}" Width="auto"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Дата публикации" Binding="{Binding books.year_publishing}" Width="auto"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Кол-во страниц" Binding="{Binding books.number_pages}" Width="auto"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Цена, руб" Binding="{Binding books.selling_price}" Width="auto"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Себестоимость" Binding="{Binding books.cost_price}" Width="auto"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Кол-во, шт" Binding="{Binding books.amount}" Width="auto"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </StackPanel>
+
+                
                 
             </Border>
         </Grid>

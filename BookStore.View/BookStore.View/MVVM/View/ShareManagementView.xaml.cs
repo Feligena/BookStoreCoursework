@@ -56,7 +56,25 @@ namespace bookstore.View.MVVM.View
 
         private void DeletePromoBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (MessageBox.Show("Вы действительно хотите удалить акцию?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                var tmpPromo = (sender as Button).DataContext as promotions;
+                tmpPromo.is_deleted = true;
 
+                var tmpPromoOnBooks = _db.promotion_on_books.Where(p => p.id_promotion == tmpPromo.id).ToList();
+                _db.promotion_on_books.RemoveRange(tmpPromoOnBooks);
+
+                try
+                {
+                    _db.SaveChanges();
+                    MessageBox.Show("Акция удалена", "Успешно!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                UpdatePromotionsDG();
+            }
         }
 
 

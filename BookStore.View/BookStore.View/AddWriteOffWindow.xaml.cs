@@ -31,6 +31,7 @@ namespace BookStore.View
                 _currentWriteOff.books = selectedBook;
                 _currentWriteOff.amount = selectedBook.amount;
                 _currentWriteOff.id = 0;
+                AddEditWriteOff.Text = "Списание книги";
             }
 
             DataContext = _currentWriteOff;

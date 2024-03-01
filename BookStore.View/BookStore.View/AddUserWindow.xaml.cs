@@ -27,7 +27,11 @@ namespace bookstore.View
             InitializeComponent();
 
             if(sendlerUser != null)
+            {
                 _currentUser = sendlerUser;
+                AddEditBayer.Text = "Редактировать данные";
+            }
+            else AddEditBayer.Text = "Добавить покупателя";
 
             DataContext = _currentUser;
         }

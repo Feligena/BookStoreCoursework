@@ -25,6 +25,8 @@ namespace bookstore.View
         public AddauthorWindow()
         {
             InitializeComponent();
+
+            AddEditAuthor.Text = "Добавить автора";
             DataContext = _currentauthor;
         }
 

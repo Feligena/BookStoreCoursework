@@ -25,6 +25,8 @@ namespace bookstore.View
         public AddPublishingHouseWindow()
         {
             InitializeComponent();
+
+            AddEditPubHouse.Text = "Добавить издательство";
             DataContext = _currentPubHouse;
         }
 

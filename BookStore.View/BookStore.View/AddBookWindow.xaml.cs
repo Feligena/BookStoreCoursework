@@ -19,8 +19,12 @@ namespace bookstore.View
         {
             InitializeComponent();
 
-            if(selectedBook != null )
+            if(selectedBook != null)
+            {
                 _currentBook = selectedBook;
+                AddEditBook.Text = "Редактировать книгу";
+            }
+            else AddEditBook.Text = "Добавить книгу";
 
             DataContext = _currentBook;
 
