@@ -9,9 +9,6 @@
 
 namespace BookStore.View.MVVM.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class write_offs
     {
         public int id { get; set; }

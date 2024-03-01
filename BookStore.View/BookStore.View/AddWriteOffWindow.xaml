@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BookStore.View"
         mc:Ignorable="d"
             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    WindowStyle="None" Background="Transparent" Height="560" Width="400" 
+    WindowStyle="None" Background="Transparent" Height="570" Width="400" 
     ResizeMode="NoResize" AllowsTransparency="True"
     WindowStartupLocation="CenterScreen">
 
@@ -48,44 +48,44 @@
                 Click="ButtonMinimize_Click"/>
 
             <Border Grid.Row="1"
-                Margin="30,0,30,45"
+                Margin="20 0 20 30"
                 Background="#B4ADCC" CornerRadius="30">
 
                 <StackPanel >
                     <TextBlock Margin="10 20 10 0" x:Name="AddEditWriteOff"
                                FontSize="18"
                                FontStyle="Italic"
-                               FontWeight="Bold"
+                               FontWeight="Medium"
                                HorizontalAlignment="Center"/>
 
-                    <TextBox x:Name ="textBoxNameBook" materialDesign:HintAssist.Hint="Название" 
+                    <TextBox x:Name ="textBoxNameBook" materialDesign:HintAssist.Hint="Название" FontSize="14"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              Margin="20,0,20,0" Text="{Binding book.name_book}" IsReadOnly="True" TextWrapping="Wrap"/>
 
-                    <TextBox x:Name ="textBoxAuthor" materialDesign:HintAssist.Hint="Автор" 
+                    <TextBox x:Name ="textBoxAuthor" materialDesign:HintAssist.Hint="Автор" FontSize="14"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              Margin="20,0,20,0" Text="{Binding book.author.human.last_name}" IsReadOnly="True"/>
 
  <!--   TODO: Решить вопрос с выводом полного имени автора в одну строку-->
 
 
-                    <TextBox x:Name ="textBoxPubHouse" materialDesign:HintAssist.Hint="Издательство" 
+                    <TextBox x:Name ="textBoxPubHouse" materialDesign:HintAssist.Hint="Издательство" FontSize="14"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              Margin="20,0,20,0" Text="{Binding book.publishing_house.name_pub_house}" IsReadOnly="True"/>
 
-                    <TextBox x:Name ="textBoxYear" materialDesign:HintAssist.Hint="Год" 
+                    <TextBox x:Name ="textBoxYear" materialDesign:HintAssist.Hint="Год" FontSize="14"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              Margin="20,0,20,0" Text="{Binding book.year_publishing}" IsReadOnly="True"/>
 
-                    <TextBox x:Name="textBoxPages" materialDesign:HintAssist.Hint="Кол-во страниц"
+                    <TextBox x:Name="textBoxPages" materialDesign:HintAssist.Hint="Кол-во страниц" FontSize="14"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              Margin="20,0,20,0" Text="{Binding book.number_pages}" IsReadOnly="True"/>
 
-                    <TextBox x:Name="genreTextBox" materialDesign:HintAssist.Hint="Кол-во страниц"
+                    <TextBox x:Name="genreTextBox" materialDesign:HintAssist.Hint="Жанр" FontSize="14"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              Margin="20,0,20,0" Text="{Binding book.genre.name_genre}" IsReadOnly="True"/>
 
-                    <ComboBox x:Name ="EmployeeComboBox" materialDesign:HintAssist.Hint="Сотрудник"
+                    <ComboBox x:Name ="EmployeeComboBox" materialDesign:HintAssist.Hint="Сотрудник" FontSize="14"
                                   Style="{StaticResource MaterialDesignComboBox}"
                                   Margin="20,10,20,0" SelectedItem="{Binding employee}" >
                         <ComboBox.ItemTemplate>
@@ -99,7 +99,7 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
 
-                    <TextBox x:Name ="textBoxAmount" materialDesign:HintAssist.Hint="Кол-во списываемых книг" 
+                    <TextBox x:Name ="textBoxAmount" materialDesign:HintAssist.Hint="Кол-во списываемых книг" FontSize="14"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              Margin="20,0,20,0" Text="{Binding amount}"/>
 

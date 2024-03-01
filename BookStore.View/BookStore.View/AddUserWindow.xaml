@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:bookstore.View"
         xmlns:viewModel="clr-namespace:bookstore.View.MVVM.ViewModel"
         mc:Ignorable="d"
-        WindowStyle="None" Background="Transparent" Height="510" Width="400" 
+        WindowStyle="None" Background="Transparent" Height="490" Width="400" 
         ResizeMode="NoResize" AllowsTransparency="True"
         WindowStartupLocation="CenterScreen">
 
@@ -31,7 +31,7 @@
                      Height="20" 
                      VerticalAlignment="Top" 
                      HorizontalAlignment="Right" 
-                     Margin="12 12" 
+                     Margin="12 10" 
                      Grid.Column="1"
                      materialDesign:HintAssist.Hint="X" Style="{StaticResource MaterialDesignFloatingActionButton}"
                      Content="X"
@@ -42,7 +42,7 @@
                      Height="20" 
                      VerticalAlignment="Top" 
                      HorizontalAlignment="Right" 
-                     Margin="40 12" 
+                     Margin="40 10" 
                      Grid.Column="1"
                      materialDesign:HintAssist.Hint="_" Style="{StaticResource MaterialDesignFloatingActionButton}"
                      Content="_"
@@ -50,28 +50,28 @@
                     Click="ButtonMinimize_Click"/>
 
             <Border Grid.Row="1"
-                    Margin=" 30,0,30,45"
+                    Margin="20 0 20 30"
                      Background="#B4ADCC" CornerRadius="30">
                 <StackPanel >
-                    <TextBlock Margin="10 20 10 10" x:Name="AddEditBayer"
+                    <TextBlock Margin="10 20 10 0" x:Name="AddEditBayer"
                                FontSize="18"
                                FontStyle="Italic"
-                               FontWeight="Bold"
+                               FontWeight="Medium"
                                HorizontalAlignment="Center"/>
 
-                    <TextBox x:Name ="textBoxFirstName" materialDesign:HintAssist.Hint="Имя" 
+                    <TextBox x:Name ="textBoxFirstName" materialDesign:HintAssist.Hint="Имя" FontSize="14"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Margin="20 10" Text="{Binding human.first_name}"/>
+                             Margin="20 5 20 10" Text="{Binding human.first_name}"/>
 
-                    <TextBox x:Name ="textBoxLastName" materialDesign:HintAssist.Hint="Фамилия" 
+                    <TextBox x:Name ="textBoxLastName" materialDesign:HintAssist.Hint="Фамилия" FontSize="14"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              Margin="20 10" Text="{Binding human.last_name}"/>
 
-                    <TextBox x:Name ="textBoxPatronimic" materialDesign:HintAssist.Hint="Отчество" 
+                    <TextBox x:Name ="textBoxPatronimic" materialDesign:HintAssist.Hint="Отчество" FontSize="14"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              Margin="20 10" Text="{Binding human.patronymic}"/>
 
-                    <TextBox x:Name ="textBoxPhone" materialDesign:HintAssist.Hint="Номер телефона" 
+                    <TextBox x:Name ="textBoxPhone" materialDesign:HintAssist.Hint="Номер телефона" FontSize="14"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              Margin="20 10" Text="{Binding phone}"/>
 

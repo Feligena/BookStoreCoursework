@@ -9,9 +9,7 @@
 
 namespace BookStore.View.MVVM.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
+
     public partial class promotion_on_books
     {
         public int id { get; set; }
