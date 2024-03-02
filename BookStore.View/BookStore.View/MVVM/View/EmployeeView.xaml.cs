@@ -25,6 +25,11 @@ namespace bookstore.View.MVVM.View
 
         private void ButtonAddEmployee_Click(object sender, RoutedEventArgs e)
         {
+            if (AdminWindow._accessRights == false)
+            {
+                MessageBox.Show("У вас нет прав доступа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             var addEmployeeWindow = new AddEmployeeWindow(null);
             addEmployeeWindow.ShowDialog();
             UpdateEmployeeDG();
@@ -32,6 +37,11 @@ namespace bookstore.View.MVVM.View
 
         private void EditEmployeeBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (AdminWindow._accessRights == false)
+            {
+                MessageBox.Show("У вас нет прав доступа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             var addEmployeeWindow = new AddEmployeeWindow((sender as Button).DataContext as employee);
             addEmployeeWindow.ShowDialog();
             UpdateEmployeeDG();
@@ -39,7 +49,12 @@ namespace bookstore.View.MVVM.View
 
         private void DeleteEmployeeBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show("Вы действительно хотите удалить сотрудника?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (AdminWindow._accessRights == false)
+            {
+                MessageBox.Show("У вас нет прав доступа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (MessageBox.Show("Вы действительно хотите удалить сотрудника?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 var tmpEmployee = (sender as Button).DataContext as employee;
                 tmpEmployee.is_deleted = true;
@@ -57,9 +72,8 @@ namespace bookstore.View.MVVM.View
                 {
                     MessageBox.Show(ex.Message.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+                UpdateEmployeeDG();
             }
-
-            UpdateEmployeeDG();
         }
 
         private void SearchEmployeeBtn_CLick(object sender, RoutedEventArgs e)
@@ -69,5 +83,6 @@ namespace bookstore.View.MVVM.View
                                                                      || em.human.last_name.Contains(SearchEmployeeText.Text)
                                                                      || em.human.patronymic.Contains(SearchEmployeeText.Text))).ToList();
         }
+
     }
 }

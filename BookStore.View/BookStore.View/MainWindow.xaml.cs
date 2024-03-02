@@ -24,7 +24,7 @@ namespace bookstore.View
             {
                 if(authorizationCheck.password == passwordBoxEntry.Password)
                 {
-                    var adminWindow = new AdminWindow();
+                    var adminWindow = new AdminWindow(authorizationCheck.employee.job_titles.access_rights);
                     adminWindow.Show();
                     this.Close();
                 }

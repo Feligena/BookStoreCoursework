@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using BookStore.View.MVVM.Models;
+using System.Windows;
 using System.Windows.Input;
 
 namespace bookstore.View
@@ -9,12 +10,15 @@ namespace bookstore.View
     public partial class AdminWindow : Window
     {
         public static AdminWindow _adminWindow;
+        public static bool _accessRights {  get; set; }
 
-        public AdminWindow()
+        public AdminWindow(bool accesses)
         {
             InitializeComponent();
             _adminWindow = this;
-            //var db = new Dbbookstore();
+
+
+            _accessRights = accesses;
         }
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)

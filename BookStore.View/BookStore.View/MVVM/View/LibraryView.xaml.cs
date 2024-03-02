@@ -27,6 +27,11 @@ namespace bookstore.View.MVVM.View
 
         private void EditBookBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (AdminWindow._accessRights == false)
+            {
+                MessageBox.Show("У вас нет прав доступа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             var addBook = new AddBook((sender as Button).DataContext as book);
             addBook.ShowDialog();
             UbdateDGLibrary();
@@ -41,6 +46,11 @@ namespace bookstore.View.MVVM.View
 
         private void DeleteBookBtn_Click(object sender, RoutedEventArgs e)
         {
+            if(AdminWindow._accessRights == false)
+            {
+                MessageBox.Show("У вас нет прав доступа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             if(MessageBox.Show("Вы действительно хотите удалить эту книгу?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 var tmp = (sender as Button).DataContext as book;
@@ -54,11 +64,10 @@ namespace bookstore.View.MVVM.View
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message.ToString());
+                    MessageBox.Show(ex.Message.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+                UbdateDGLibrary();
             }
-
-            UbdateDGLibrary();
         }
 
         private void BtnAddBook_CLick(object sender, RoutedEventArgs e)

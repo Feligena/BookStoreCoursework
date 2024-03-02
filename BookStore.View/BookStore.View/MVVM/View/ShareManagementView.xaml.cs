@@ -27,6 +27,11 @@ namespace bookstore.View.MVVM.View
 
         private void AddPromotionBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (AdminWindow._accessRights == false)
+            {
+                MessageBox.Show("У вас нет прав доступа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             var addPromoWindow = new AddPromotionWindow(null);
             addPromoWindow.ShowDialog();
             UpdatePromotionsDG();
@@ -40,6 +45,11 @@ namespace bookstore.View.MVVM.View
 
         private void EditPromoBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (AdminWindow._accessRights == false)
+            {
+                MessageBox.Show("У вас нет прав доступа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             var addPromoWindow = new AddPromotionWindow((sender as Button).DataContext as promotion);
             addPromoWindow.ShowDialog();
             UpdatePromotionsDG();
@@ -47,6 +57,11 @@ namespace bookstore.View.MVVM.View
 
         private void DeletePromoBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (AdminWindow._accessRights == false)
+            {
+                MessageBox.Show("У вас нет прав доступа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             if (MessageBox.Show("Вы действительно хотите удалить акцию?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 var tmpPromo = (sender as Button).DataContext as promotion;
