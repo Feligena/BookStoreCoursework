@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using bookstore.View.MVVM.ViewModel;
-using bookstore.View;
 using BookStore.View.MVVM.Models;
 
 namespace bookstore.View.MVVM.View
@@ -44,7 +39,12 @@ namespace bookstore.View.MVVM.View
 
         private void DeleteUserBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show("Вы действительно хотите удалить покупателя?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (AdminWindow._accessRights == false)
+            {
+                MessageBox.Show("У вас нет прав доступа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (MessageBox.Show("Вы действительно хотите удалить покупателя?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 var tmp = (sender as Button).DataContext as user;
                 tmp.is_deleted = true;
@@ -59,9 +59,8 @@ namespace bookstore.View.MVVM.View
                 {
                     MessageBox.Show(ex.Message.ToString());
                 }
+                UpdateUsersDG();
             }
-
-            UpdateUsersDG();
         }
 
         private void SearchBayersBtn_CLick(object sender, RoutedEventArgs e)

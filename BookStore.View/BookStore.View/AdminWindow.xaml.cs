@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BookStore.View.MVVM.Models;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace bookstore.View
 {
@@ -20,12 +10,15 @@ namespace bookstore.View
     public partial class AdminWindow : Window
     {
         public static AdminWindow _adminWindow;
+        public static bool _accessRights {  get; set; }
 
-        public AdminWindow()
+        public AdminWindow(bool accesses)
         {
             InitializeComponent();
             _adminWindow = this;
-            //var db = new Dbbookstore();
+
+
+            _accessRights = accesses;
         }
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)

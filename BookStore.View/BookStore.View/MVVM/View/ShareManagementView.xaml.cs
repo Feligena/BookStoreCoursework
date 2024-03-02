@@ -1,19 +1,9 @@
 ﻿using BookStore.View;
 using BookStore.View.MVVM.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace bookstore.View.MVVM.View
 {
@@ -37,6 +27,11 @@ namespace bookstore.View.MVVM.View
 
         private void AddPromotionBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (AdminWindow._accessRights == false)
+            {
+                MessageBox.Show("У вас нет прав доступа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             var addPromoWindow = new AddPromotionWindow(null);
             addPromoWindow.ShowDialog();
             UpdatePromotionsDG();
@@ -50,6 +45,11 @@ namespace bookstore.View.MVVM.View
 
         private void EditPromoBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (AdminWindow._accessRights == false)
+            {
+                MessageBox.Show("У вас нет прав доступа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             var addPromoWindow = new AddPromotionWindow((sender as Button).DataContext as promotion);
             addPromoWindow.ShowDialog();
             UpdatePromotionsDG();
@@ -57,6 +57,11 @@ namespace bookstore.View.MVVM.View
 
         private void DeletePromoBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (AdminWindow._accessRights == false)
+            {
+                MessageBox.Show("У вас нет прав доступа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             if (MessageBox.Show("Вы действительно хотите удалить акцию?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 var tmpPromo = (sender as Button).DataContext as promotion;

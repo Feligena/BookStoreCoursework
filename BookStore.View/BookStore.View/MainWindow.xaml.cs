@@ -1,18 +1,6 @@
 ﻿using BookStore.View.MVVM.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace bookstore.View
 {
@@ -29,8 +17,6 @@ namespace bookstore.View
 
         private void EntranceBtn_Click(object sender, RoutedEventArgs e)
         {
-            //textBoxLoginEntry
-            //passwordBoxEntry
 
             var authorizationCheck = _db.authorizations.FirstOrDefault(a => a.login == textBoxLoginEntry.Text && a.is_deleted == false);
 
@@ -38,7 +24,7 @@ namespace bookstore.View
             {
                 if(authorizationCheck.password == passwordBoxEntry.Password)
                 {
-                    var adminWindow = new AdminWindow();
+                    var adminWindow = new AdminWindow(authorizationCheck.employee.job_titles.access_rights);
                     adminWindow.Show();
                     this.Close();
                 }

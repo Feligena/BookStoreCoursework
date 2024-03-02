@@ -40,7 +40,7 @@
         </StackPanel>
         <DataGrid Margin="20 30"
                   Background="#B4ADCC" 
-                  Height="350"
+                  Height="350" FontSize="14"
                   x:Name="UserDataGrid"
                   AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>

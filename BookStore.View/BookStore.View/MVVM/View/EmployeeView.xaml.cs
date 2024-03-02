@@ -1,20 +1,8 @@
-﻿using bookstore.View;
-using bookstore.View;
-using BookStore.View.MVVM.Models;
+﻿using BookStore.View.MVVM.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace bookstore.View.MVVM.View
 {
@@ -37,6 +25,11 @@ namespace bookstore.View.MVVM.View
 
         private void ButtonAddEmployee_Click(object sender, RoutedEventArgs e)
         {
+            if (AdminWindow._accessRights == false)
+            {
+                MessageBox.Show("У вас нет прав доступа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             var addEmployeeWindow = new AddEmployeeWindow(null);
             addEmployeeWindow.ShowDialog();
             UpdateEmployeeDG();
@@ -44,6 +37,11 @@ namespace bookstore.View.MVVM.View
 
         private void EditEmployeeBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (AdminWindow._accessRights == false)
+            {
+                MessageBox.Show("У вас нет прав доступа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             var addEmployeeWindow = new AddEmployeeWindow((sender as Button).DataContext as employee);
             addEmployeeWindow.ShowDialog();
             UpdateEmployeeDG();
@@ -51,7 +49,12 @@ namespace bookstore.View.MVVM.View
 
         private void DeleteEmployeeBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show("Вы действительно хотите удалить сотрудника?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (AdminWindow._accessRights == false)
+            {
+                MessageBox.Show("У вас нет прав доступа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (MessageBox.Show("Вы действительно хотите удалить сотрудника?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 var tmpEmployee = (sender as Button).DataContext as employee;
                 tmpEmployee.is_deleted = true;
@@ -69,9 +72,8 @@ namespace bookstore.View.MVVM.View
                 {
                     MessageBox.Show(ex.Message.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+                UpdateEmployeeDG();
             }
-
-            UpdateEmployeeDG();
         }
 
         private void SearchEmployeeBtn_CLick(object sender, RoutedEventArgs e)
@@ -81,5 +83,6 @@ namespace bookstore.View.MVVM.View
                                                                      || em.human.last_name.Contains(SearchEmployeeText.Text)
                                                                      || em.human.patronymic.Contains(SearchEmployeeText.Text))).ToList();
         }
+
     }
 }

@@ -29,7 +29,7 @@
                     Height="20" 
                     VerticalAlignment="Top" 
                     HorizontalAlignment="Right" 
-                    Margin="12 12" 
+                    Margin="12 10" 
                     Grid.Column="1"
                     materialDesign:HintAssist.Hint="X" Style="{StaticResource MaterialDesignFloatingActionButton}"
                     Content="X"
@@ -40,7 +40,7 @@
                     Height="20" 
                     VerticalAlignment="Top" 
                     HorizontalAlignment="Right" 
-                    Margin="40 12" 
+                    Margin="40 10" 
                     Grid.Column="1"
                     materialDesign:HintAssist.Hint="_" Style="{StaticResource MaterialDesignFloatingActionButton}"
                     Content="_"
@@ -48,20 +48,20 @@
                     Click="ButtonMinimize_Click"/>
 
             <Border Grid.Row="1"
-                    Margin=" 30,0,30,45"
+                    Margin="20 0 20 30"
                     Background="#B4ADCC" CornerRadius="30">
 
                 <StackPanel>
                     <TextBlock Margin="10 10 10 0"
                                Text="Книги, участвующие в акции"
-                               FontSize="16"
+                               FontSize="18"
                                FontStyle="Italic"
-                               FontWeight="Bold"
+                               FontWeight="Medium"
                                HorizontalAlignment="Center"/>
                     
                     <DataGrid Margin="0 5"
                               Background="#B4ADCC" 
-                              Height="270" Width="670"
+                              Height="270" Width="670" FontSize="14"
                               x:Name="PromoOnBooksDataGrid"
                               AutoGenerateColumns="False" IsReadOnly="True">
                         <DataGrid.Columns>
@@ -85,7 +85,7 @@
                             <DataGridTextColumn Header="Кол-во страниц" Binding="{Binding book.number_pages}" Width="auto"></DataGridTextColumn>
                             <DataGridTextColumn Header="Цена, руб" Binding="{Binding book.selling_price}" Width="auto"></DataGridTextColumn>
                             <DataGridTextColumn Header="Себестоимость" Binding="{Binding book.cost_price}" Width="auto"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Кол-во, шт" Binding="{Binding books.amount}" Width="auto"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Кол-во, шт" Binding="{Binding book.amount}" Width="auto"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
 

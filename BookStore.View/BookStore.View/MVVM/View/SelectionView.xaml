@@ -77,11 +77,26 @@
                     
                 </ComboBox>
             </Border>
+            
         </StackPanel>
-        <DataGrid Margin="20 30"
+        
+        <Border Grid.Row="1"
+                Margin="20 20" Height="350"
+                Background="#B4ADCC" CornerRadius="10">
+            <StackPanel>
+                <TextBlock Margin="10 150 10 10"
+                           Text="Вкладка находится на этапе разработки"
+                           FontSize="18"
+                           FontStyle="Italic"
+                           FontWeight="Medium"
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <!--<DataGrid Margin="20 30" FontSize="14"
                   Background="#B4ADCC" Height="350">
 
-
-        </DataGrid>
+        </DataGrid>-->
+        
     </StackPanel>
 </UserControl>
